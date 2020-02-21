@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>history方法</title>
+    <style>
+        a{
+            display: block;
+        }
+    </style>
+    <script>
+        function back() {
+            //window.history.back();
+            window.history.go(-2);
+            //跳转完毕后会再次以当前页面为基点
+        }
+        function forward() {
+            window.history.forward();
+        }
+        document.write(window.location.href + ' ' + window.navigator.appVersion);
+        var u_agent = navigator.userAgent; //返回用户代理头
+
+        //screen 对象获取屏幕信息
+        alert(window.screen.availWidth + " " + window.screen.availHeight/*减去任务栏*/
+            + ' ' + window.screen.height);//屏幕分辨率的
+    </script>
+</head>
+<body>
+    <a href="#target1">跳转1</a>
+    <a name="target1">第一个锚点</a>
+    <a href="#target2">跳转2</a>
+    <a name="target2">第二个锚点</a>
+
+    <a href="#target3">跳转3</a>
+    <a name="target3">第一个锚点</a>
+    <a href="#target4">跳转4</a>
+    <a name="target4">第二个锚点</a>
+    <p>点击跳转</p>
+    <input type="button" value="后退" onclick="back()" style="display: block">
+    <input type="button" value="前进" onclick="forward()" style="display: block">
+</body>
+
+</html>

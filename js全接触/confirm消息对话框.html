@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>confirm消息对话框</title>
+    <script type="text/javascript">
+        function con() {
+            var message = confirm('你是全世界最帅的人吗？');
+            if(message == true){
+                document.write('恭喜你，你是全世界最帅的男孩！');
+            }else {
+                document.write('嘻唰唰的你是全世界最悲哀的人！');
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" onclick="con()" value="请点击">
+</body>
+</html>

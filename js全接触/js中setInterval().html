@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setInterval</title>
+    <script>
+        function click() {
+            var time = new Date();
+            document.getElementById('clock').value = time;
+        }
+        var stop = setInterval(click,100);
+    </script>
+</head>
+<body>
+    <input type="text" id="clock" size="50">
+    <input type="button" value="停止" onclick="clearInterval(stop)">
+    <input type="button" value="开始" onclick="setInterval('click()',100)">
+</body>
+</html>

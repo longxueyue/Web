@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>填充样式</title>
+    <script type="text/javascript" src="js/graph.js"></script>
+</head>
+<body>
+<canvas id="canvas" style="border: 1px solid #999999;margin: 50px auto;display: block;"></canvas>
+</body>
+<script>
+
+    window.onload = function () {
+
+        var canvas = document.getElementById('canvas');
+
+        canvas.width = 800;
+        canvas.height = 800;
+
+        var context = canvas.getContext('2d');
+
+
+        /*
+       //图片的方式
+       var backgroundImage = new Image();
+       backgroundImage.src = 'back.jpg';
+       backgroundImage.onload = function () {
+       var backI = context.createPattern(backgroundImage,'repeat');
+           context.fillStyle = backI;
+           context.fillRect(0,0,800,800);
+       };*/
+        //no-repeat,repeat-x,repeat-y,repeat
+        /*
+        //通过传递新建createElement画布来创建填充背景
+        var backCanvas = createBackGroundCanvas();
+        var Pattern = context.createPattern(backCanvas,'no-repeat');
+        context.fillStyle = Pattern;
+        context.fillRect(0,0,800,800);
+        */
+
+        //通过视频来传递
+        var video = document.createElement('video');
+        video.src = '蕾姆的告白_bilibili.mp4';
+        video.preload = 'preload';
+        video.autoplay = 'autoplay';
+        video.height = context.canvas.height;
+        video.width = context.canvas.width;
+
+
+        setInterval(function () {
+            var backVideo = context.createPattern(video,'no-repeat');
+            context.fillStyle = backVideo;
+            context.fillRect(0,0,800,800);
+        },1000);
+
+
+    };
+    function createBackGroundCanvas() {
+        var backCanvas = document.createElement('canvas');//通过指定名称来创建一个画布
+        backCanvas.height = 100;
+        backCanvas.width = 100;
+
+        var backContext = backCanvas.getContext('2d');
+        drawStar(backContext,50,50,50,0);
+        return backCanvas;
+    }
+</script>
+</html>

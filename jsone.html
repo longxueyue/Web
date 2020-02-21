@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript第一课</title>
+    <script>
+        // alert("我喜欢埃罗芒阿老师！");//一种输出语句
+        // document.write("<p>埃罗芒阿老师</p>");
+        var name1 = "埃罗芒阿老师，我最喜欢你了！";
+        var x = 3;
+        var y = x + 3;
+        function getname()
+        {
+            document.getElementById("name").innerHTML = name1;
+            document.getElementById("speak").innerHTML = "讨厌啦╰(~▽~)";
+        }
+
+        function myfuction()
+        {
+            document.write("糟糕，啥都没了 <br> 你彻底完了......<br>"+y/3);
+            var cars = new Array("yadi","baoma","feiche");
+            // for(var i=0;i<cars.length;i++)
+            // {
+            //     document.write(cars[i]+" ");
+            // }
+            // for(x in cars)
+            // {
+            //     document.write(cars[x]);
+            // }
+            lable://标记了标签
+            {
+                document.write(" "+cars[0]+" ");
+                document.write(cars[1]+" ");
+                break lable;
+                document.write(cars[2]+" ");
+            }
+
+        }
+
+    </script>
+</head>
+<body>
+    <h1>问你喜欢的人？</h1>
+    <p id="name">Who ?</p>
+    <button id="speak" type="button" onclick="getname()">不要害羞，说吧</button>
+    <br>
+    <button type="button" onclick="myfuction()">你敢点嘛？</button>
+</body>
+</html>

@@ -1,0 +1,83 @@
+body{
+    background-color: #a8ffdc;
+    margin: 0px;
+    padding: 0px;
+    font-size: 12px;
+    font-family: Arial;
+}
+#Container{
+    background-color: #8fff6d;
+    margin: 0px auto;
+    padding: 0px 1px;       /*上下、左右*/
+    height: 600px;
+    width: 780px;
+    text-align: left;
+}
+#Banner{
+    background-color: #ff997f;
+    margin: 0px;
+    padding: 0px;
+    height: 170px;
+    width: 100%;
+}
+#globelink{
+    margin: 1px 0px;
+    padding: 0px;
+}
+#globelink ul{
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+#globelink ul li{
+    float: left;
+    text-align: center;
+    width: 86.667px;
+}
+#globelink a{
+    display: block;         /*设置为块级标签，使之能设置宽高*/
+    padding: 9px 4px 11px 4px;
+    margin: 0px;
+    background: url("002.png") no-repeat;
+}
+#globelink a:link,#globelink a:visited{
+    color: #beffb1;
+    text-decoration: underline;                 /*下划线*/
+}
+#globelink a:hover{
+    color: red;
+    background-image: url("01.png");
+    text-decoration: none;
+}
+#left{
+    background-color: #ffa4ca;
+    margin: 0px;
+    padding: 0px;
+    height: 330px;
+    width: 200px;
+    float: left;
+}
+#middle{
+    background-color: #b0a9ff;
+    margin: 0px;
+    padding: 0px;
+    height: 330px;
+    width: 400px;
+    float: left;
+}
+#right{
+    background-color: #bebeff;
+    margin: 0px;
+    padding: 0px;
+    height: 330px;
+    width: 180px;
+    float: left;
+}
+#footer{
+    background-color: #ff997f;
+    margin: 1px 0px;
+    padding: 0px;
+    height: 50px;
+    width: 100%;
+    clear: both;
+}

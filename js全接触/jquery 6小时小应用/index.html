@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>搜索框</title>
+    <link rel="stylesheet" type="text/css" href="css/restore.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script type="javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="javascript" src="js/base.js"></script>
+</head>
+<body>
+    <div class="container"><!--主容器开始-->
+        <div class="add-task"><!--增加任务开始-->
+            <input type="text">
+            <button type="submit">提交</button>
+        </div><!--增加任务结束-->
+
+        <div class="task-list clearfloat"><!--任务清单开始-->
+            <div class="task-item"><!--任务1开始-->
+                <span><input type="checkbox"></span>
+                <span class="task-content">item content</span>
+                <span>delete</span>
+                <span>detail</span>
+            </div><!--任务1结束-->
+            <div class="task-item">
+                <span><input type="checkbox"></span>
+                <span class="task-content">item content</span>
+                <span>delete</span>
+                <span>detail</span>
+            </div>
+            <div class="task-item">
+                <span><input type="checkbox"></span>
+                <span class="task-content">item content</span>
+                <span>delete</span>
+                <span>detail</span>
+            </div>
+        </div><!--任务清单结束-->
+
+        <div class="task-detail-mask"></div>
+
+        <div class="task-detail"><!--任务描述更新开始-->
+            <div class="content">xiawubaibai</div><!--任务标题开始-->
+            <div  class="desc">
+                <textarea cols="30" rows="4">wdaiowshdihawi</textarea><!--任务描述开始-->
+            </div>
+            <input type="date">
+            <button>更新</button>
+        </div><!--任务描述更新结束-->
+
+    </div><!--主容器结束-->
+</body>
+</html>

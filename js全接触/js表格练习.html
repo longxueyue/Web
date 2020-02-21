@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bg{
+            background-color: #f2f2f2;
+        }
+        .restore{
+            background-color: #fff;
+        }
+    </style>
+    <script>
+
+        window.onload = function (ev) {
+            var tr_Move = document.getElementsByTagName('tr');
+            for(var i = 0;i<tr_Move.length;i++){
+                bgChange(tr_Move[i]);
+            }
+        }
+
+        function bgChange(tr){
+            tr.onmouseover = function () {
+                tr.className = 'bg';
+            };
+            tr.onmouseout = function () {
+                tr.className = 'restore';
+            }
+        }
+        //创建行
+        function create_Tr() {
+            var ID = prompt('请输入学号');
+            var Name = prompt('请输入姓名');
+            var parent_Tbody = document.getElementById('table').lastChild;
+            var new_Tr = document.createElement('tr'),
+                student_ID = document.createElement('td'),
+                student_Name = document.createElement('td'),
+                operate = document.createElement('td');
+            student_ID.innerHTML = ID;
+            student_Name.innerHTML = Name;
+            operate.innerHTML = '<a href="javascript:;" onclick="delete_Tr(this)">删除</a>';
+            new_Tr.appendChild(student_ID);
+            new_Tr.appendChild(student_Name);
+            new_Tr.appendChild(operate);
+            parent_Tbody.appendChild(new_Tr);
+            bgChange(new_Tr);
+        }
+
+        //删除行
+        function delete_Tr(obj) {
+            var tr = obj.parentNode.parentNode;
+            document.getElementById('table').lastChild.removeChild(tr);
+        }
+    </script>
+</head>
+<body>
+<table border="1" width="50%" id="table">
+    <tr>
+        <th>学号</th>
+        <th>姓名</th>
+        <th>操作</th>
+    </tr>
+    <tr>
+        <td>xh001</td>
+        <td>王小明</td>
+        <td><a href="javascript:;" onclick="delete_Tr(this)">删除</a></td>   <!--在删除按钮上添加点击事件  -->
+    </tr>
+    <tr>
+        <td>xh002</td>
+        <td>刘小芳</td>
+        <td><a href="javascript:;" onclick="delete_Tr(this)">删除</a></td>   <!--在删除按钮上添加点击事件  -->
+    </tr>
+</table>
+<input type="button" value="添加一行" onclick="create_Tr()" />   <!--在添加按钮上添加点击事件  -->
+</body>
+</html>

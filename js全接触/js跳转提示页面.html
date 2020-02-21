@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跳转提示</title>
+    <style>
+        .num{
+            font-weight: bold;
+        }
+
+        .back{
+            display: inline-block;
+            color: #CCDAEC;
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        var count = 5;
+        window.onload = function (ev) {
+            var num = document.getElementById('num');
+            num.innerHTML = count;
+
+            setInterval(backCount,1000);
+        }
+        function backCount() {
+            count--;
+            document.getElementById('num').innerHTML = count;
+            if(count == 0){
+                backPage();
+            }
+        }
+        function backPage() {
+            //window.history.back();
+            window.open('http://www.imooc.com','_self');
+        }
+    </script>
+</head>
+<body>
+    <h2>操作成功</h2>
+    <p style="display: inline-block"><span id="num" class="num"></span>秒后回到主页</p>
+    <a href="http://www.imooc.com" onclick="backPage()" class="back">返回</a>
+</body>
+</html>

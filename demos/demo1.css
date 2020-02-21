@@ -1,0 +1,30 @@
+#container{
+    width:940px;
+    overflow: hidden;  /*溢出元素框*/
+    margin:0 auto;
+    padding: 0 0 10px 15px;
+    border: 1px solid black;
+}
+#container li{
+    float: left;
+    width: 300px;
+    height: 300px;
+    border: 1px solid black;
+    margin: 10px 10px 0 0;
+}
+/*多元素选择器*/
+ul,li{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+#container li img{
+    float: left;
+    opacity: 0.3;
+    cursor:crosshair;  /*放在上面时光标的形状*/
+    filter: alpha(opacity=30); /*为图片加入滤镜*/  /*这个是设置图片透明度，值在0-100*/
+}
+/*现在的意思*/
+.current{
+    opacity: 1 !important;/*增加样式权重*/
+}

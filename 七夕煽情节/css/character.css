@@ -1,0 +1,58 @@
+.character {
+    width: 151px;
+    height: 291px;/*自身容器的大小*/
+    background: url(../images/boy.png) -0px -291px no-repeat;
+    position: absolute;
+    /* 设置一个元素的坐标 */
+    left: 6%;
+    top: 55%;
+}
+.slowWalk{
+    -webkit-animation-name: person-slow;
+    -webkit-animation-duration: 950ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: steps(1, start);
+    -moz-animation-name: person-slow;
+    -moz-animation-duration: 950ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: steps(1, start)
+}
+@-webkit-keyframes person-slow {
+    0%{
+        background-position: -0px -291px;
+    }
+    25% {
+        background-position: -602px -0px;
+    }
+    50% {
+        background-position: -302px -291px;
+    }
+    75% {
+        background-position: -151px -291px;
+    }
+    100% {
+        background-position: -0px -291px;
+    }
+}
+
+@-moz-keyframes person_slow {
+    0%{
+        background-position: -0px -291px;
+    }
+    25% {
+        background-position: -602px -0px;
+    }
+    50% {
+        background-position: -302px -291px;
+    }
+    75% {
+        background-position: -151px -291px;
+    }
+    100% {
+        background-position: -0px -291px;
+    }
+}
+.pauseWalk{
+    -webkit-animation-play-state: paused;
+    -moz-animation-play-state: paused;
+}

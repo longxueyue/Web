@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常规选择器01</title>
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="demo.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<script>
+	$(document).ready(function(){
+		var liAll = $("ul > li");
+	     liAll.each(function (index,obj) {
+		 	$(this).click(function () {
+		 	    for (var i =0;i<liAll.length; i++){
+					$(liAll[i]).removeClass("12");
+					//alert(liAll[i].innerHTML);
+					//liAll[i].class = "";
+					//alert(1);
+					//alert(liAll[i].class);
+			 	}
+
+			 	$(this).addClass("active");
+			 	//$(this).addClass("active");
+             });
+         });
+	
+	})
+</script>
+<body>
+    <div class="pox">我喜欢你，你却辜负了我！！！</div>
+    <div id="box">我的世界真的很小</div>
+    <div class="pox">恨你......我恨你！！！</div>
+    <a href="https://www.baidu.com/" target="_blank">百度</a>
+    <div id="box1"><!--当此div块区域没有设置id或者类，则和下面的div属于同一级别，没有识别性-->
+        <p>阿斯顿哦</p><!--因此，在css文件里写子元素选择器方法时，两个div都可以识别，都会变成蓝色-->
+        <p>阿斯顿哦</p><!--果然是这样!!!!!-->
+        <p>阿斯顿哦</p>
+        <div>
+            <h>阿斯顿哦</h>
+            <p>阿斯顿哦</p>
+            <p>阿斯顿哦</p>
+            <p>阿斯顿哦</p>
+        </div>
+    </div>
+    <ul>
+    	<li class="12">12</li>
+    	<li>34</li>
+    	<li>56</li>
+    </ul>
+</body>
+
+</html>

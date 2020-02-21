@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>高级API</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<form id="mooBox">
+    <fieldset>
+        <legend>登陆界面</legend>
+        <p id="info"></p>
+        <p id="info2" style="display: none">错误提示</p>
+        <p>
+            <label for="username">账号 </label>
+            <input type="text" id="username" name="username">
+        </p>
+        <p>  <!--label标签中的for属性应该与相关元素的id属性值相同-->
+            <!--也就是说操作label就是操作与之绑定的相关表单元素-->
+            <label for="password">密码 </label>
+            <input type="password" id="password" name="password" required>
+        </p>
+        <p>
+            <label for="confirm-password">确认密码 </label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+        </p>
+        <p>
+            <button id="check">检查表单</button>
+        </p>
+        <p>
+            <input type="submit" value="登陆">
+        </p>
+    </fieldset>
+</form>
+<script src="jquery-3.3.1.js"></script>
+<script src="jquery.validate-1.13.1.js"></script>
+<script>
+    var validator;
+    $(document).ready(function () {
+        validator = $('#mooBox').validate({
+            rules:{
+                username:{
+                    /*required:true,*/
+                    rangelength:[2,10],
+                    /*postcode:true*/
+                    postcode:'中国'//给postcode传一个参数
+                },
+                password:{
+                    required:true,
+                    rangelength:[3,16]
+                },
+                'confirm-password':{
+                    equalTo:'#password'
+                }
+            },
+            messages:{
+                username:{
+                    required:'请输入用户名',
+                    rangelength:'用户名输入格式为2-10位'
+                },
+                password:{
+                    required:'请输入密码',
+                    rangelength:'密码输入格式为3-16位'
+                },
+                'confirm-password':{
+                    equalTo:'两次密码不一致，请重新输入'
+                }
+            },
+
+            //validator()方法配置项
+
+            /*submitHandler:function (form) {//submitHandler是表单通过验证后执行的函数
+                console.log($(form).serialize());//serialize输出表单值的结果
+            },
+            invalidHandler:function (event,validator) {//无法提交表单运行的函数
+                console.log('错误数：'+validator.numberOfInvalids());
+            }*/
+            /*ignore:
+                "#username",*/
+               //对某些指定的元素不进行校验,默认参数为:hidden
+            /*groups:{   //对一组元素进行验证，发送一个错误信息到errorPlacement
+                login:"username password confirm-password"
+            },*/
+            //自定义错误信息放到哪里
+            /*errorPlacement:function (error,element) {
+                error.insertBefore('#info');  //将错误信息发送到指定位置
+            },*/
+
+            /*onsubmit:false,  //表单验证时不检查
+            onfocusout:false,  //是否在获取焦点时验证
+            onkeyup:false,  //是否在敲击键盘时验证
+            onclick:false,    //鼠标点击时验证*/
+
+            // errorClass:"wrong1",//指定验证不通过的类名
+            // vaildClass:"right1",//指定验证通过的类名
+            // errorContainer:"#info2",//有错误信息出现时，自动把隐藏的信息显示出来
+
+            // errorLabelContainer:"#info",//把错误的信息统一放到一个容器里
+
+            // errorElement:'li',//使用什么标签标记错误
+            // wrapper:'ul'//使用什么标签把上面的errorElement包起来
+
+            //显示总共有多少个未通过的元素
+            showErrors:function (errorMap,errorList) {
+                console.log(errorMap);
+                console.log(errorList);
+                this.defaultShowErrors();  //提示默认错误信息
+            },
+            //一旦验证通过，便会增加这个类
+            /*success:"right"*/
+            /*success:function (lable) {   //success针对的是lable元素
+                lable.addClass('right1');       //而highlight针对的是input这个元素
+            }*/
+
+            //可以给未通过的元素添加效果
+            highlight:function (element,errorClass,validClass) {
+                //console.log(validClass);
+                $(element).addClass(errorClass).removeClass(validClass);
+                $(element).fadeOut().fadeIn();//动画淡入淡出效果
+                //先出再入！！！！不能先入再出
+            },
+            unhighlight:function (element,errorClass,validClass) {
+                $(element).removeClass(errorClass).addClass(validClass);
+            }
+        });
+/*
+        //第一个参数name代表要验证的方法名称
+        //第二个参数method代表你自定义的方法
+        //第三个参数代表出错时的提示消息
+        $.validator.addMethod("postcode",function (value,element,params) {
+            var postcode = /^[0-9]{6}$/;
+            //this.optional(element)意思是当postcode为非必填的时候有这个，
+            // 当不填写的时候因为其element为空返回true，则不会触发验证
+            return this.optional(element) || (postcode.test(value));
+        },$.validator.format("请填写正确的{0}邮编！"));//传参的方法
+
+
+
+*/
+        //通过定义的事件来触发invalidHandler函数
+        //事件原名invalid-form通过点·可以在后面加任意字符
+        $('#mooBox').on('invalid-form.1ad',function (event,validator) {
+            console.log('错误数：' + validator.numberOfInvalids());
+        });
+
+
+
+        $('#check').on('click',function () {
+           alert($('#mooBox').valid()?'填写正确！':'填写错误！');//valid()方法检查表单或某些元素书写是否有效
+        });
+        /*$('#').rules();*///rules是可以校验某个元素的，而不可以校验整个表单
+        $('#username').rules('add',{minlength:2,maxlength:3});//等等
+        $('#username').rules('remove','minlength maxlength');//移除校验规则
+        /*validator.form();*///验证表单是否有效！返回值为布尔值
+        validator.element('#password');//验证某个元素是否有效！
+        validator.resetForm();//将表单恢复成原来的状态
+        /*validator.showErrors({
+            username:'你填错啦！'
+        }); */  //针对某个元username素显示特定的错误信息
+        validator.numberOfInvalids();//返回无效的元素数量
+
+        //validator的静态方法
+        var template = $.validator.format('{0},{1},{2}');//中间的，号可以换成任意符号
+        //格式化字符串，用参数代替{n}，n从零开始
+        template("wang",["s",'sda'],'da');
+
+        //修改插件的默认设置
+        $.validator.setDefaults({
+            debug:true
+        });
+        //根据 已有的类名添加验证规则
+        $.validator.addClassRules({
+            text:{
+                minlength:2,
+                maxlength:10
+            }
+        })
+    });
+</script>
+</body>
+</html>

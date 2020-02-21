@@ -1,0 +1,28 @@
+/*#box{
+    color:red;
+}
+.pox{
+    color:Green;
+}
+a[href]{
+    color:Pink;
+}
+div > p{
+    color:blue;
+}*/
+/*input:focus{
+    background: red;
+}*/
+.red{
+    color:red;
+}
+.blue{
+    color:blue;
+}
+.green{
+    color:green;
+}
+.size{
+    font-size: 50px;
+}
+

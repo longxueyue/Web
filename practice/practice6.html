@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>postion定位之relative</title>
+    <style type="text/css">
+        body{
+            margin: 5px;
+            font-size: 12px;
+            font-family: 微软雅黑;
+        }
+        #father{
+            background-color: #ffee74;
+            border: 1px dashed blue;
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+        }
+        #block1{
+            background-color: #a8ffe9;
+            border: 1px dashed #e2d2ff;
+            position: relative;/*相对位移*/
+            left: 30px;/*左边框距离它原来的位置30px*/
+            top: 25px;/*同上*/
+            /*left top 是在有定位元素postion和float才能发挥作用*/
+        }
+        #block2{
+            background-color: #c8ff66;
+            border: 1px dashed #22ff22;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+<div id="father">
+    <div id="block1">relative</div>
+    <div id="block2">block2</div>
+</div>
+</body>
+</html>

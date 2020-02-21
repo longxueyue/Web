@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>localStorage</title>
+</head>
+<body>
+</body>
+<script>
+    var src = '290_1405158481.png';
+    function set(key) {
+        var img = document.createElement('img');
+
+        /*img.addEventListener('load',function (ev) {
+            var imgCanvas = document.createElement('canvas');
+            var imgContext = imgCanvas.getContext('2d');
+            imgCanvas.width = img.width;
+            imgCanvas.height = img.height;
+
+            imgContext.drawImage(img,0,0,imgCanvas.width,imgCanvas.height);
+
+            var imgWithDataURL = imgCanvas.toDataURL('image/png');//通过DataURL取出图片
+            //保存到本地存储中
+            try{
+                localStorage.setItem(key,imgWithDataURL);//使用
+            }catch (e){
+                console.log('Storage failed：' +e);
+            }
+        },false);*/
+        img.onload = function (ev) {
+            var imgCanvas = document.createElement('canvas');
+            var imgContext = imgCanvas.getContext('2d');
+            imgCanvas.width = img.width;
+            imgCanvas.height = img.height;
+
+            imgContext.drawImage(img,0,0,imgCanvas.width,imgCanvas.height);
+
+            var imgWithDataURL = imgCanvas.toDataURL('image/png');//通过DataURL取出图片
+            //保存到本地存储中
+            try{
+                localStorage.setItem(key,imgWithDataURL);//使用
+            }catch (e){
+                console.log('Storage failed：' +e);
+            }
+        }
+        img.src = src;
+    }
+    function get(key) {
+        var srcStr = localStorage.getItem(key);
+        var imgObj = document.createElement('img');
+        imgObj.src = srcStr;
+        document.body.appendChild(imgObj);
+    }
+</script>
+</html>

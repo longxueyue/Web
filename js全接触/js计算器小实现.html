@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>啊哈</title>
+    <style>
+        input[type=text]{
+            width: 50px;
+            height: 20px;
+            border: #999 solid 1px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <input type="text" id="enter1">
+    <select id="select">
+        <option value="+" >+</option>
+        <option value="-" >-</option>
+        <option value="*" >*</option>
+        <option value="/" >/</option>
+    </select>
+    <input type="text" id="enter2">
+    <input type="button" name="button" onclick="operate()" value=" = ">
+    <input type="text" id="result">
+    <script>
+        var x = document.getElementById('enter1');
+        var y = document.getElementById('enter2');
+        var sign = document.getElementById('select');
+        var result = document.getElementById('result');
+        function operate() {
+            var sum;
+            switch (sign.value){
+                case '+': sum = parseInt(x.value) + parseInt(y.value);break;
+                case '-': sum = parseInt(x.value) - parseInt(y.value);break;
+                case '*': sum = parseInt(x.value) * parseInt(y.value);break;
+                case '/': sum = parseInt(x.value) / parseInt(y.value);break;
+            }
+            result.value = sum;
+        }
+    </script>
+</body>
+</html>

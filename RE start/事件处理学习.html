@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript事件处理</title>
+    <script src="event.js"></script>  <!--//把跨浏览器的事件封装起来-->
+    <script src="things.js"></script>
+</head>
+<body>
+<div id="box">
+    <input type="button" value="按钮" id="btn" onclick="sendMessage(this)">  <!--HTML事件处理程序-->
+    <input type="button" value="按钮2" id="btn2">
+    <input type="button" value="按钮3" id="btn3">
+    <a href="导航栏01.html" id="aago">啊哈</a>
+</div>
+
+</body>
+</html>
+<!--<script>
+    window.onload = function () {
+        function sendMessage(ev){
+            alert(ev.type);//这个是事件的类型
+            //alert(ev.target.nodeName);//这个是事件的目标
+
+            //IE中获取事件目标
+            var ele = ev.target || ev.srcElement;//后面是ie的
+            alert(ele);
+            //alert('这是JavaScript事件');
+        }
+        //DOM0级事件处理
+        var btn = document.getElementById('btn2');  //写dom0级事件处理，JavaScript代码要放在body后面，
+        var btn3 =document.getElementById('btn3');
+        btn.onclick = function(){           //因为代码从上往下执行，否则则会报错找不到函数
+            alert('hello world');           //解决办法是加入window.onload
+        };
+        btn.onclick = null;
+        //DOM二级事件处理
+        /btn3.addEventListener('mouseenter',sendMessage,false);  //false事件在冒泡阶段执行
+        btn3.addEventListener('click',function () {
+            alert('我去');
+        },false);
+        //使用二级事件处理的事件只能用二级事件处理删去
+        //  btn3.removeEventListener('mouseenter',sendMessage,false);  //不支持IE
+
+        //IE事件处理
+        // btn3.attachEvent('onclick',sendMessage);
+        eventUtil.addHander(btn3,'click',sendMessage);
+        //eventUtil.removeHander(btn3,'click',sendMessage);
+    }
+
+</script>-->

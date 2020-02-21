@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>正则表达式</title>
+    <script>
+        var test1 = new RegExp("w","g");
+        document.write(test1.test("shks wq"));
+        document.write("<br>"+test1.exec("saduhiouash")+"<br>");
+        //全局检索，挨个输出
+        do{
+            var result = test1.exec("sada wfcaswsdw");
+            document.write(result+" ");
+        }while(result!=null);
+        test1.compile("e");//改变RegExp正则表达式的值
+        document.write("<br>"+test1.test("sda"));
+        var str = "sads: 100%ed";
+        var pat1 =/\d/g;
+        document.write("<br>"+str.match(pat1)+"<br>");
+    </script>
+</head>
+<body>
+
+</body>
+</html>

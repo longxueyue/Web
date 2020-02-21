@@ -1,0 +1,107 @@
+body{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+a:hover{text-decoration:none}
+/*导航栏开始*/
+#header{
+    background: #fff;
+    border: 0;
+    box-shadow: 1px 1px 10px #ccc;
+}
+#header .navbar-brand{
+    font-size: 30px;
+    font-weight: bold;
+    color: #ffe867;
+    height: 70px;
+    line-height: 35px;
+}
+#navbar .navbar-nav>li>a{
+    font-size: 16px;
+    color: #cacaca;
+    height: 70px;
+    line-height: 35px;
+}
+#navbar .navbar-nav>li.active>a{
+    padding-top: 0;
+    margin-top: 15px;
+    border-radius: 25px;
+    color: #fff;
+    font-weight: bold;
+    background-color: #dcb5ff;
+    height: 35px;
+    line-height: 35px;
+}
+
+/*轮播图开始*/
+#carousel{
+    margin-top: 70px;
+}
+#carousel .item{
+    height: 576px;
+}
+#carousel img{
+    max-width: 100%;
+}
+/*网格布局开始*/
+.grid{
+    padding: 0;
+    height: 503px;
+    position: relative;
+    zoom: 100;
+    overflow: hidden;
+}
+.grid-left{
+    height: 503px;
+    background: url("../images/290_1609249941.jpg") no-repeat center center;
+}
+.grid-right{
+    height: 503px;
+    background: url("../images/290_1405158481.png") no-repeat center center;
+}
+.grid h2{
+    text-align: center;
+    background: linear-gradient(to right,#7971ea,#ea4c4c);
+    color: transparent;
+    -webkit-background-clip: text;/*规定背景的绘制区域 */
+}
+.changeImg .an{
+    width: 10%;
+    height: 60px;
+    color: #ccc;
+    font-size: 40px;
+    text-align: center;
+    line-height: 60px;
+    position: absolute;
+    background: rgba(0,0,0,0.1);
+}
+.changeImg .anl{
+    left: 0;
+    top: 50%;
+}
+.changeImg .anr{
+    right: 0;
+    top: 50%;
+}
+.foodImg img{
+    width: 674px;
+    height: 470px;
+    float: left;
+}
+.changeImg{
+    height: 470px;
+}
+.changeImg .img_text{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #76dbd1;
+    text-align: center;
+    line-height: 30px;
+    background-size: 100px 30px;
+    background-color: rgba(0,0,0,0.1);
+}
+
+

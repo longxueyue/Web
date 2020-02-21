@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>z-index属性</title>
+    <style type="text/css">
+        body{
+            margin: 10px;
+            font-family: 微软雅黑;
+            font-size: 12px;
+        }
+        #block1{
+            background-color: #fbff8b;
+            border: 1px dashed #000000;
+            padding: 10px;
+            position: absolute;/*加上绝对定位属性就会以body作为初始坐标来进行定位*/
+            left: 20px; top: 30px;/*在其后面加上坐标设置来设置区域位置*/
+            z-index: 1;/*z-index属性重叠优先级判断*/
+        }
+        #block2{
+            background-color: greenyellow;
+            border: 1px dashed #000000;
+            padding: 10px;
+            position: absolute;
+            left: 40px; top: 50px;
+            z-index: 0;
+        }
+        #block3 {
+            background-color: palegreen;
+            border: 1px dashed #000000;
+            padding: 10px;
+            position: absolute;
+            left: 60px; top: 70px;
+            z-index: -1;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div id="block1">AAAAAAAA</div>
+    <div id="block2">BBBBBBBB</div>
+    <div id="block3">CCCCCCCC</div>
+</body>
+</html>

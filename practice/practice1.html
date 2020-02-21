@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>盒子模型成型一</title>
+    <style type="text/css">
+        .outside{
+            padding: 10px 30px 50px 70px;/*顺时针设置内边距*/
+            border: 1px solid red;/*边框宽度 边框风格 边框颜色*/
+            background-color: #d8ffb5;
+        }
+        .inside{
+            background-color: #1fffee;
+            border: 1px solid #005dbc;
+            width:100%; line-height: 60px;/*以百分比设置，宽度和行高*//*100%是在宽度上撑满整个父容器*/
+            text-align: center;/*排列*/
+            font-family: Arial;
+        }
+    </style>
+</head>
+<body>
+<div class="outside">
+    <div class="inside">padding</div>
+</div>
+</body>
+</html>

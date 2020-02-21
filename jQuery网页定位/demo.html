@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>小志购物页面</title>
+    <link rel="stylesheet" href="css.css">
+   <!-- <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>-->
+    <!--<script type="text/javascript" src="script.js"></script>-->
+    <script>
+        function getClassName(Pre,val){
+            //求出父对象Pre下面所有元素
+            var elements = document.getElementsByTagName('*');
+            var results = [];//声明数组
+            for(var i=0;i<elements.length;i++){
+                if(elements[i].className == val){//这个方法只适用于只有一个类的元素val
+                    results.push(elements[i]);
+                }
+            }
+            return results;
+        }
+        function hasClass(obj,cls) {
+            return obj.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+        }
+        function removeC(obj,cls) {
+            if(hasClass(obj,cls)){
+                var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+                obj.className = obj.className.replace(reg," ");
+            }
+        }
+        function addC(obj,cls) {
+            if(!hasClass(obj,cls)){
+                obj.className += " " + cls;
+            }
+        }
+        window.onload = function () {
+            //滚动条滑动
+            window.onscroll = function () {
+                //求出移动距离
+                var top = document.documentElement ? document.documentElement.scrollTop : document.body.scrollTop;
+                var menu = document.getElementById('menu').getElementsByTagName('a');
+                //得到所有的item,介于ie6不支持document.getElementsByClassName故自定义求出
+                var items = getClassName(document.getElementById('content'),'item');
+                //取得当前楼层的id
+                var currentId = "";
+
+                for(var i=0;i<items.length;i++){
+                    var m = items[i];//得到本身对象
+                    var currentTop = m.offsetTop;//offset是对原视口而scroll是对当前视口
+                    //console.log(currentTop);
+                    if(top > currentTop-200){
+                        currentId = m.id;
+                        //console.log(currentId);
+                    }else{
+                        break;
+                    }
+                }
+                //增加样式与删除样式
+                //由于find()方法是jQuery中遍历的函数，则
+                if(currentId){
+                    for(var j=0;j<menu.length;j++){
+                        var _menu = menu[j];
+                        var _href = _menu.href.split('#');
+                        //console.log(_href[_href.length-1]);
+                        if(_href[_href.length-1] != currentId){
+                            removeC(_menu,'current');
+                        }else {
+                            addC(_menu,'current');
+                        }
+                    }
+                }
+
+
+            }
+        };
+
+    </script>
+</head>
+<body>
+    <div id="menu">
+        <ul>    <!--利用id进行锚点链接-->
+            <li><a href="#item1" class="current">1F 男装</a></li>
+            <li><a href="#item2">2F 女装</a></li>
+            <li><a href="#item3">3F 美妆</a></li>
+            <li><a href="#item4">4F 家电</a></li>
+            <li><a href="#item5">5F 手办</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h1>小志购物页面</h1>
+        <div id="item1" class="item">
+            <h2>男装</h2>
+            <ul>
+                <li><a href="#"><img src="1F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="1F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="1F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="1F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="1F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="1F.png" alt="喜欢就好"></a></li>
+            </ul>
+        </div>
+        <div id="item2" class="item">
+            <h2>女装</h2>
+            <ul>
+                <li><a href="#"><img src="2F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="2F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="2F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="2F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="2F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="2F.png" alt="喜欢就好"></a></li>
+            </ul>
+        </div>
+        <div id="item3" class="item">
+            <h2>美妆</h2>
+            <ul>
+                <li><a href="#"><img src="3F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="3F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="3F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="3F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="3F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="3F.png" alt="喜欢就好"></a></li>
+            </ul>
+        </div>
+        <div id="item4" class="item">
+            <h2>家电</h2>
+            <ul>
+                <li><a href="#"><img src="4F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="4F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="4F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="4F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="4F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="4F.png" alt="喜欢就好"></a></li>
+            </ul>
+        </div>
+        <div id="item5" class="item">
+            <h2>手办</h2>
+            <ul>
+                <li><a href="#"><img src="5F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="5F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="5F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="5F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="5F.png" alt="喜欢就好"></a></li>
+                <li><a href="#"><img src="5F.png" alt="喜欢就好"></a></li>
+            </ul>
+        </div>
+
+        
+    </div>
+</body>
+</html>

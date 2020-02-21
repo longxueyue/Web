@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查找HTML元素</title>
+</head>
+<body>
+    <p id="intro">Hello World!</p>
+    <p>本例演示<b>getElementById</b>方法！</p>
+    <script>
+        var  x = document.getElementById("intro");//介绍的意思
+        document.write('<p>id="intro"的文本是：'+x.innerHTML+'</p>');//其是向页面输出内容的
+    </script>
+    <hr>
+
+    <div id="main">
+        <p>The DOM is very useful.</p>
+        <p>本例演示 <b>getElementsByTagName</b>方法。</p><!--通过标签名来寻找元素-->
+    </div>
+    <script>
+        var x=document.getElementById("main");//通过查找id来找id下的标签元素
+        var y=x.getElementsByTagName("p");//通过标签名来寻找
+        document.write('id为"main"的div中的第一段文本是：'+y[0].innerHTML);//因为id="main"下的元素标签有两个p,故成为了数组
+    </script>
+    <hr>
+
+    <p id="p1">Hello World!</p>
+    <script>
+        document.getElementById("p1").innerText="123";//改当前id底下的文字信息与innerHtml相同
+    </script>
+
+    <hr>
+    <p><b>日期函数</b></p>
+    <script>
+        document.write(Date());//不能在文档加载后再出现document.write()这样会覆盖改文档
+        //window.location.reload();//这个只能放在最后，因为运行到这里就会重新加载页面，所以根本显示不出来底下的信息
+    </script>
+    <hr>
+
+    <img id="image" src="e0f.jpg">
+    <script>
+        document.getElementById("image").src="蕾姆a.jpg";//改变HTML的属性
+    </script>
+
+
+</body>
+</html>

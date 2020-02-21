@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript创建事件</title>
+    <script>
+        //从事件处理器head里面写入经过触发而发挥作用的函数
+        function func(id) {
+            id.innerHTML = "请不要这么夸奖我嘛，讨厌！";
+
+        }
+        function words() {
+            document.getElementById("wen").innerHTML = "emmm...哥哥是大笨蛋，轻小说男主！！！(妹妹把抱着的玩偶熊扔到了我的脸上，很疼的说...)";
+            document.getElementById("wen").style.color = "pink";
+        }
+        function baoshi() {
+            document.getElementById("time").value = Date();
+        }
+        function xunwen()
+        {
+            var x = document.getElementById("wan");
+            x.style.color = "green";
+        }
+        function hui() {
+            var x = document.getElementById("huida");
+            x.value = "对不起了我的妹妹啊，哥哥还是把持不住作为男人的本性，毕竟那个...那个是泳池啊！！！"
+        }
+        function fang(col) {
+            col.style.backgroundColor = "green";
+        }
+        function likai(col) {
+            col.style.backgroundColor = "#ffd7fa";
+        }
+        function mDown(obj) {
+            obj.style.backgroundColor = "#1ec5e5";
+            obj.innerHTML = "请放开我..."
+        }
+        function mUp(obj) {
+            obj.style.backgroundColor = "yellow";
+            obj.innerHTML = "有趣吧。"
+        }
+    </script>
+</head>
+<body><!---->
+    <p onclick="this.innerHTML = '我喜欢埃罗芒阿老师！！！'">哥哥，我只是好奇..好奇啊，你喜欢谁呢？</p>
+    <p onclick="func(this)">哥哥是个笨蛋！</p>
+    <p id="wen">再也不理哥哥了......</p>
+    <button type="button" onclick="words()">为什么...？</button>
+    <br>
+    <input type="text"  style="border: none" value="呐...哥哥，现在几点了？" onclick="baoshi()">
+    <br>
+    <input type="text" id="time" style="border: none" size="44"  >
+    <br><hr>
+    <p id="wan" onchange="xunwen()">哥哥明天真的要去修学旅行吗？</p>
+    <input id="huida" placeholder="好好回答呦..." onchange="hui()" size="70">
+    <hr>
+    <div onmouseover="fang(this)" onmouseout="likai(this)" style="background-color: #ffd7fa; height: 20px;
+width: 200px;">
+        哥哥，你喜欢什么颜色？
+    </div>
+    <p>喜欢纱雾你喜欢的颜色...嘿嘿</p>
+    <p onmousedown="mDown(this)" onmouseup="mUp(this)" style="background-color: #ffd7fa;color: palegreen;width: 150px">纱雾你点我一下！</p>
+</body>
+</html>

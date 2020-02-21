@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>启航啦！</title>
+</head>
+    <script>
+        var message = document.getElementById('message');
+
+        var date = new Date(),
+            dateFormat = date.getFullYear() + '年' + getMonth() + '月' +
+                        date.getDate() + '日  ' + '星期' + getDay() + '--班级总分为:';
+
+        var scoreAllStr = "小明:87;小花:81;小红:97;" +
+            "小天:76;小张:74;小小:94;小西:90;小伍:76;小迪:64;小曼:76";
+
+        var personAllStr = scoreAllStr.split(';');
+
+        dateFormat += avScore();
+        window.onload = function (ev) {
+            document.getElementById('message').innerHTML = dateFormat;
+        }
+        function avScore(){
+            var sum = 0;
+            for(var i=0;i<personAllStr.length;i++){
+                var scoreStr = personAllStr[i].split(':');
+                sum += parseInt(scoreStr[1]);
+            }
+            return Math.round(sum/10).toString();
+        }
+
+        function getMonth() {
+            if(date.getMonth()<9){
+                return '0'+(date.getMonth()+1);
+            }else {
+                return date.getMonth()+1;
+            }
+        }
+        function getDay() {
+            var week;
+            switch (date.getDay()){
+                case 0:week =  '日';break;
+                case 1:week =  '一';break;
+                case 2:week =  '二';break;
+                case 3:week =  '三';break;
+                case 4:week =  '四';break;
+                case 5:week =  '五';break;
+                case 6:week =  '六';break;
+            }
+            return week;
+        }
+    </script>
+<body>
+    <div id="message"></div>
+</body>
+</html>

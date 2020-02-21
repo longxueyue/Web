@@ -1,0 +1,25 @@
+body,button,div,ul,li,span,h1,h2,h3,h4,h5,h6,input{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif,"微软雅黑";
+}
+ol,ul,li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+.clearfloat{
+    zoom: 1;
+}
+.clearfloat:after{
+    height: 0;
+    content: '';
+    clear: both;
+    display: block;
+    visibility: hidden;
+}
+img{
+    border: none;
+    display: block;
+}

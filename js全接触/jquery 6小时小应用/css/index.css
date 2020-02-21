@@ -1,0 +1,99 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background: rgba(0,0,0,0.1);
+}
+.container{
+    max-width: 700px;
+    margin: 40px auto;
+    position: relative;
+}
+button{
+    display: inline-block;
+    cursor: pointer;
+    border: 0;
+}
+input{
+    border: 0;
+}
+.add-task{
+    margin: 4px auto;
+}
+.add-task input[type=text],.task-detail input[type=date]{
+    width: 84%;
+    display: block;
+    float: left;
+    padding: 10px;
+    margin-right: 1%;
+    background: #eee;
+}
+.add-task input[type=text]:hover,
+.task-detail input[type=date]:hover,
+.task-detail input[type=date]:focus,
+.add-task input[type=text]:focus{
+    cursor: pointer;
+    background: #fff;
+}
+.add-task button{
+    width: 14%;
+    padding: 10px;
+    background: #007fff;
+}
+
+button,input[type=text],.task-item,
+.task-detail input[type=date],
+textarea{
+    border-radius: 3px;
+    padding: 10px;
+    box-shadow: 1px 2px 2px #ccc;
+}
+
+/*增加任务结束*/
+.task-list{
+    margin: 5px 0;
+}
+.task-item {
+    padding: 10px;
+    background: #fff;
+    color: #333;
+    margin-bottom: 2px;
+    box-shadow: 1px 2px 2px #eee;
+}
+.task-item:hover{
+    background: #eee;
+    cursor: pointer;
+    transition: background 200ms;
+}
+
+/*任务描述更新开始*/
+.task-detail-mask,.task-detail{
+    position: absolute;
+}
+.task-detail{
+    width: 50%;
+    height: 100%;
+    padding: 10px;
+    top: 0;
+    right: 0;
+    background: #fff;
+}
+.task-detail-mask{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(30,30,30,0.3);
+}
+.task-detail .content{
+    padding: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.task-detail button{
+    width: 20%;
+    margin: 5px 0;
+}
+.task-detail > *{
+    border-bottom: 5px;
+}

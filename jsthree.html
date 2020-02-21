@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript抛出异常</title>
+    <script>
+        // function myfunction() {
+        //
+        //     try{
+        //         var x = document.getElementById("value").value;
+        //         if(x=="") throw "值为空";
+        //         if(isNaN(x)) throw "不是数字";
+        //         if(x<0) throw "小于0";
+        //         if(x>10) throw "大于10";
+        //     }catch (err)
+        //     {
+        //         var y = document.getElementById("txt").innerHTML = "错误："+ err + "。"
+        //     }
+        // }
+        function first(){
+            var h = new Array();
+            h = document.getElementById("value").value;
+            var x1 = false;
+            var x2 = false;
+            var x3 = false;
+            for(var t=0;t<h.length;t++)
+            {
+                if(h[t]>=0&&h[t]<=9)
+                {
+                    x1 = true;
+                    continue;
+                }
+                if(h[t]>='a'&&h[t]<='z')
+                {
+                    x2 = true;
+                    continue;
+                }
+                if(h[t]>='A'&&h[t]<='Z')
+                {
+                    x3 = true;
+                    continue;
+                }
+            }
+            if(!x1||!x2||!x3) var y1 = document.getElementById("txt").innerHTML = "错误：";
+            if(!x1) var y1 = document.getElementById("txt").innerHTML = y1+"需要设置数字 ";
+            if(!x2) var y1 = document.getElementById("txt").innerHTML = y1+"需要设置小写字母 ";
+            if(!x3) var y1 = document.getElementById("txt").innerHTML = y1+"需要设置大写字母 ";
+            if(x1&&x2&&x3) y1 = document.getElementById("txt").innerHTML = "";
+        }
+    </script>
+</head>
+<body><!--script放在body里面直接执行，而放到head里面会只加载，需要某一事件才会执行-->
+    <div id="main">
+        <p id="p1">这是第一个First JavaScript！！！</p>
+        <p>请输入带有数字、小写字母、大写字母的密码：</p>
+        <input type="text" id="value">
+        <button type="button" onclick="first()">确定</button>
+    </div>
+    <button type="button" onclick='document.getElementById("p1").style.color = "blue"';>点击这里</button>
+    <script>
+
+        var t = document.getElementById("main");
+        var y = t.getElementsByTagName("p");
+        document.write("pde 1:" + y[0].innerHTML);
+    </script>
+    <p id="txt"></p>
+</body>
+</html>

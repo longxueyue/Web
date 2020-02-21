@@ -1,0 +1,94 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-size: 14px;
+    line-height: 1.7;   /*这个是行间距*/
+}
+#content{
+    width:800px;
+    padding: 20px;
+    margin:0 auto;
+}
+#content h1{
+    color: dodgerblue;
+    margin-bottom: 30px;
+    text-align: center;
+}
+#content .item{
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px dotted dodgerblue;
+}
+#content .item ul{
+    padding-top: 10px;
+    border-top: 3px solid dodgerblue;
+}
+#content .item h2{
+    display: block;
+    width: 60px;
+    height:40px;
+    font-size: 16px;
+    font-weight: bold;
+    text-indent: 10px;
+    line-height: 40px;  /*设置行间距的高度与本身高度相等就能设置垂直居中*/
+    background-color: #ccc;
+}
+#content .item h2:hover{
+    height: 50px;
+    line-height: 50px;
+    margin-top: -10px;
+    color: #fff;
+    background-color: dodgerblue;
+}
+#content .item li{
+    list-style: none;
+    display: inline;
+    margin-right: 10px;
+}
+#content .item li a img{
+    width:230px;
+    height:230px;
+    border: none;
+}
+/*对那个导航栏进行定位*/
+
+/*对于IE6不支持fixed的处理办法如下*/
+    /*ie6 hack*/
+/** html, * html body{
+    background-image: url(about:blank);
+    background-attachment: fixed;!*设置固定的背景图像*!
+}
+* html #menu{
+    postion:absolute;
+    top: expression(((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+100+'px');
+}*/
+
+
+#menu{
+    position: fixed;  /*生成绝对定位的元素，对于浏览器窗口进行定位*/
+    left: 50%;  /*把元素移动到窗口中心*/
+    margin-left: 400px;  /*对放在窗口中心的元素进行设置外左边距 ，这是设置定位的小技巧*/
+    top:100px;
+    width:80px;
+}
+#menu ul{
+    list-style-type: none;
+}
+#menu ul li a{
+    display: block;
+    margin: 5px 0;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    width: 80px;
+    height: 50px;
+    line-height: 50px;
+    text-decoration: none;
+    text-align: center;
+}
+#menu ul li a:hover,.current{
+    color:#fff;
+    background-color: dodgerblue;
+}

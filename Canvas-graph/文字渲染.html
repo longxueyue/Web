@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>字体渲染</title>
+</head>
+<body>
+    <canvas id="canvas" style="display: block;margin: 40px auto;border: 1px solid #999;"></canvas>
+</body>
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+        canvas.height = 800;
+        canvas.width = 800;
+
+        var context = canvas.getContext('2d');
+
+        var linearGrad = context.createLinearGradient(200,0,600,0);
+        linearGrad.addColorStop(0,'blue');
+        linearGrad.addColorStop(0.25,'yellow');
+        linearGrad.addColorStop(0.5,'rgba(255,23,144,0.5)');
+        linearGrad.addColorStop(0.75,'purple');
+        linearGrad.addColorStop(1,'pink');
+        context.fillStyle = linearGrad;
+        context.strokeStyle = 'green';
+
+        context.font = "italic bold 40px 微软雅黑";
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText('我是最帅的王小志！',400,400);
+        context.strokeText('我是最帅的王小志！',400,400);
+    }
+</script>
+</html>

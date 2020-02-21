@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建CSS过渡</title>
+    <style type="text/css">
+        .class1{
+            width: 30px;
+            height: 30px;
+            background-color: #ffe670;
+        }
+        p:hover{
+            width: 300px;
+            height: 161px;
+            background-image: url("310803_300.jpg");
+            background-color: #55ff44;
+            transition-delay: 0.5s;/*延迟花费的时间*/
+            transition-duration: 500ms;/*过渡效果发生的时间*//*duration持续时间*/
+            transition-property: background-color;/*过渡属性是图片*/
+        }
+    </style>
+</head>
+<body>
+    <p class="class1"></p>
+</body>
+</html>

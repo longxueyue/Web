@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS创建动画</title>
+    <style type="text/css">
+        .div{
+
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;/*生成相对定位的元素*/
+            animation-delay: 2s;
+            animationduration: 5s;/*规定一个动画完成需要的秒数*/
+            animation-name: xiaozhi;
+            animation-iteration-count: infinite;/*播放次数无限次*/
+            /*animation-direction: alternate;!*动画轮流反向播放*!*/
+            animation-play-state: running;
+
+            -webkit-animation-delay: 2s;
+            -webkit-animation-duration: 5s;
+            -webkit-animation-name: xiaozhi;
+            /*-webkit-animation-direction: alternate;*/
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-play-state: running;
+
+        }
+        @keyframes xiaozhi{
+            0% {background: red; left: 0px; top: 0px;}
+            25% {background: aqua; left: 50px; top: 0px;}
+            50% {background: yellow; left: 50px; top: 50px;}
+            75% {background: blue; left: 0px; top: 50px;}
+            100% {background: red; left: 0px; top: 0px;}
+        }
+        @-webkit-keyframes xiaozhi {
+            0% {background: red; left: 0px; top: 0px;}
+            25% {background: aqua; left: 50px; top: 0px;}
+            50% {background: yellow; left: 50px; top: 50px;}
+            75% {background: blue; left: 0px; top: 50px;}
+            100% {background: red; left: 0px; top: 0px;}
+        }
+        p{
+            font-family: 微软雅黑;
+            font-size: 50px;
+        }
+        .p1{
+            font-family: 微软雅黑;
+            font-size: 50px;
+            animation-delay: 2s;
+            animation-duration: 5s;
+            animation-name: wenzi;
+            animation-iteration-count: infinite;
+            animation-play-state: running;
+
+            -webkit-animation-delay: 2s;
+            -webkit-animation-duration: 5s;
+            -webkit-animation-name: xiaozhi;
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-play-state: running;
+        }
+        @keyframes wenzi {
+            0% {background: red; }
+            25% {background: aqua;}
+            50% {background: yellow;}
+            75% {background: blue;}
+            100% {background: red;}
+        }
+        @-webkit-keyframes wenzi {
+            0% {background: red; color: yellow}
+            25% {background: aqua; color: #ffe670}
+            50% {background: yellow; color: aqua}
+            75% {background: blue; color: red}
+            100% {background: red; color: yellow}
+        }
+    </style>
+</head>
+<body>
+    <div class="div"><!--生成绝对定位的元素--><!--z-index堆叠层级，默认为0同级-->
+        <p class="p1" style="color: #55ff44">傻子</p>
+    </div>
+</body>
+</html>

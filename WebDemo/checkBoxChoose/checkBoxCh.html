@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单选框选择</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        dl{
+            width: 140px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            margin: 20px auto;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        dt{
+            line-height: 40px;
+            border-bottom:  2px solid #000;
+            text-align: left;
+            font-size: 17px;
+        }
+        dd{
+            line-height: 30px;
+        }
+        input{
+            margin-right: 14px;
+        }
+        .checkReserve{
+            float: right;
+            text-decoration: underline;
+        }
+        .info{
+            width: 550px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            text-align: center;
+            line-height: 2rem;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+
+            var checkAll = document.getElementById("checkAll");
+            var checkReserve = document.getElementById("checkReserve");
+            var labelText = document.getElementsByTagName("label");
+            var input = document.getElementsByTagName("input");
+            var i,n;
+
+            function checkIsAll() {
+                for(i=1,n=0;i<input.length;i++){
+                    input[i].checked && n++;
+                }
+                input[0].checked = n == input.length-1;
+                labelText.innerHTML = input[0].checked ? 全选 : 全不选;
+            }
+
+            checkAll.onclick = function (ev) {
+                for(i=1;i<input.length;i++){
+                    input[i].checked = this.checked; //这里的this指checkAll
+                }
+                checkIsAll();
+            }
+
+            checkReserve.onclick = function (ev) {
+                for(i=1;i<input.length;i++){
+                    input[i].checked = !input[i].checked;
+                }
+                checkIsAll();
+            }
+
+            for(i=1;i<input.length;i++){
+                input[i].onclick = function () {
+                    checkIsAll();  //随时更新状态
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+<div>
+    <dl>
+        <dt><input type="checkbox" id="checkAll"><label>全选</label><a href="javascript:" class="checkReserve" id="checkReserve">反选</a></dt>
+        <dd>
+            <p><label><input type="checkbox">选择框 1</label></p>
+            <p><label><input type="checkbox">选择框 2</label></p>
+            <p><label><input type="checkbox">选择框 3</label></p>
+            <p><label><input type="checkbox">选择框 4</label></p>
+            <p><label><input type="checkbox">选择框 5</label></p>
+            <p><label><input type="checkbox">选择框 6</label></p>
+            <p><label><input type="checkbox">选择框 7</label></p>
+            <p><label><input type="checkbox">选择框 8</label></p>
+            <p><label><input type="checkbox">选择框 9</label></p>
+        </dd>
+    </dl>
+</div>
+<div class="info">时时更新选项框的状态，里面有全选与全不选选择器，以及反选选择器</div>
+</body>
+</html>

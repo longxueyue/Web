@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<ul> 空白节点（IE不是）
+    <li>Java</li>空白节点（IE不是）
+    <li>C#</li>空白节点（IE不是）
+    <li>C++</li> 空白节点（IE不是）
+</ul>-->
+<!--<div>
+    javascript
+    <p>javascript</p>
+    <div>jQuery</div>
+    <h5>PHP</h5>
+</div>-->
+<ul id="con">
+    <li id="lesson1">javascript
+        <ul><li id="tcon"> 基础语法</li>
+            <li>流程控制语句</li>
+            <li>函数</li>
+            <li>事件</li>
+            <li>DOM</li>
+        </ul>
+    </li>
+    <li id="lesson2">das</li>
+    <li id="lesson3">dadf</li>
+    <li id="lesson4">HTML/CSS
+        <ul id="content">
+            <li>文字</li>
+            <li>段落</li>
+            <li>表单</li>
+            <li>表格</li>
+        </ul>
+    </li></ul>
+<button onclick="clearText()">清除节点内容</button>
+<script>
+    /*var x = document.getElementsByTagName('ul')[0].childNodes;
+    document.write('子节点数目：'+x.length + '<br />');
+    document.write('子节点类型：'+x[0].nodeType);*/
+    /*var div1 = document.getElementsByTagName('div')[0].childNodes;
+    for(var i=0;i<div1.length;i++){
+        document.write('属性:' + div1[i].nodeName + ' '+ div1[i].nodeType + ' ' + div1[i].nodeValue + '<br / >');
+    }*/
+    var mylist = document.getElementById("tcon");
+    var list =mylist.parentNode.parentNode.parentNode.childNodes;
+    alert(list[7].firstChild.nodeValue);
+    var WINDOW_WIDTH = document.documentElement.clientWidth || document.body.clientWidth;
+    var WINDOW_HEIGHT = document.documentElement.clientHeight || document.body.clientHeight;
+    alert(WINDOW_WIDTH + ' ' + WINDOW_HEIGHT);
+    //document.write();
+    function clearText() {
+        var content=document.getElementById("content");
+        // 在此完成该函数
+        var childnode = content.childNodes;
+        for(var i=0;i<childnode.length;i++){
+            var x = childnode[i];
+            if(childnode[i].nodeType!=1){
+                continue;
+            }else {
+                x = childnode[i];
+                content.removeChild(x);
+            }
+        }
+
+    }
+</script>
+</body>
+</html>

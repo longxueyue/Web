@@ -1,0 +1,16 @@
+*{
+    margin: 0;
+    padding: 0;}
+#main{
+    position: relative;}/*相对定位的元素是相对于原本的正常位置移动*/
+.box{
+    padding: 15px 0 0 15px;
+    float: left;}
+.pic{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;/*圆角属性*/
+    box-shadow: 0 0 5px #ccc;}
+.pic img{
+    width: 165px;
+    height: auto;}

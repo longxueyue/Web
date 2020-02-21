@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>透明效果</title>
+    <style>
+        #canvas_panel{
+            width: 1200px;
+            height: 800px;
+            position: relative;
+            margin: 40px auto;  /*没有定义高宽引起*/
+        }
+        #panel{
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            padding: 20px;
+            width: 250px;
+            height: 120px;
+            background: rgba(244,193,210,0.69);
+        }
+        #panel h1{
+            height: 30px;
+            font-family: sans-serif 微软雅黑;
+            font-size: 30px;
+            line-height: 30px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: rgb(130,156,244);
+        }
+        #panel a{
+              /*块级元素才有宽和高*/
+            text-decoration: none;
+            height: 40px;
+            font-family: sans-serif 微软雅黑;
+            font-size: 20px;
+            line-height: 40px;
+            font-weight: bold;
+            text-align: center;
+            color: #fff;
+            border-radius: 6px 6px;
+        }
+        #canvas_btn{
+            display: inline-block;
+            width: 100px;
+            margin-left: 10px;
+            height: 40px;
+            background: rgba(154,204,244,0.69);
+        }
+        .back_btn{
+            width: 45px;
+            display: inline-block;
+            margin: 5px;
+        }
+        #write_back{
+            background: #fff;
+        }
+        #black_back{
+            background: #000;
+        }
+        .button_click{
+            border: 3px solid rgba(154,204,244,0.69);
+        }
+    </style>
+</head>
+<body>
+<div id="canvas_panel">
+    <canvas id="canvas" style="border: 3px solid #999;"></canvas>
+    <div id="panel">
+        <h1>Canvas面板操作</h1>
+        <a href="#" id="canvas_btn">停止运动</a>
+        <a href="#" class="back_btn button_click" id="write_back" >&nbsp;</a>
+        <a href="#" class="back_btn" id="black_back">&nbsp;</a>
+    </div>
+</div>
+</body>
+<script>
+    var balls = [];
+    var is_Moving = true;
+    var back_Color = 'write';
+    window.onload = function () {
+        var canvas = document.getElementById('canvas');
+        canvas.height = 800;
+        canvas.width = 1200;
+
+        var context = canvas.getContext('2d');
+        //context.globalAlpha = 0.7;
+        for (var i=0;i<100;i++){
+            var R = Math.floor(Math.random()*255),
+                G = Math.floor(Math.random()*255),
+                B = Math.floor(Math.random()*255),
+                A =Math.random(),
+                r = Math.random()*20+40;
+
+            aBall = {
+                radius:r,
+                x:Math.random()*(canvas.width-2*r)+r,
+                y:Math.random()*(canvas.height-2*r)+r,
+                vx:(Math.random()*5+5)*Math.pow(-1,Math.floor(Math.random()*100)),
+                vy:(Math.random()*5+5)*Math.pow(-1,Math.floor(Math.random()*100)),
+                color:"rgba("+R+","+G+","+B+","+A+")"
+            }
+            balls[i]=aBall;
+        }
+        setInterval(function () {
+            draw(context);
+            if(is_Moving){
+                update(canvas.width,canvas.height);
+            }
+        },
+        50
+        );
+
+        document.getElementById('canvas_btn').onclick = function (ev) {
+            if(is_Moving){
+                is_Moving = false;
+                this.text = '开始运动';
+            }else{
+                is_Moving = true;
+                this.text = '停止运动';
+            }
+        };
+
+        var write_back = document.getElementById('write_back'),
+            black_back = document.getElementById('black_back');
+
+        write_back.onclick = function (ev) {
+            if(back_Color == 'write'){
+                return false
+            }else {
+                black_back.className = 'back_btn';
+                this.className = "";
+                back_Color = 'write';
+                this.className = 'back_btn button_click';
+            }
+        }
+        black_back.onclick = function (ev) {
+            if(back_Color == 'black'){
+                return false;
+            }else {
+                write_back.className = 'back_btn';
+                this.className = "";
+                back_Color = 'black';
+                this.className = 'back_btn button_click';
+            }
+        }
+    };
+    function draw(cxt) {
+        cxt.clearRect(0,0,cxt.canvas.width,cxt.canvas.height);
+
+        if(back_Color == 'black'){
+            cxt.fillStyle = 'black';
+            cxt.fillRect(0,0,cxt.canvas.width,cxt.canvas.height);
+            document.getElementById('canvas').style.cssText = 'border: 3px solid rgba(154,204,244,0.69)';
+        }else{
+            document.getElementById('canvas').style.cssText = 'border: 3px solid #999';
+        }
+
+        for (var i=0;i<balls.length;i++){
+            cxt.fillStyle = balls[i].color;
+            cxt.beginPath();
+            cxt.arc(balls[i].x,balls[i].y,balls[i].radius,0,2*Math.PI);
+            cxt.closePath();
+            cxt.fill();
+        }
+    }
+    function update(width,height) {
+
+        for(var i=0;i<balls.length;i++){
+
+            balls[i].x += balls[i].vx;
+            balls[i].y += balls[i].vy;
+
+            if(balls[i].x+balls[i].radius>=width){
+                balls[i].vx = -balls[i].vx;
+            }
+            if(balls[i].x-balls[i].radius<=0){
+                balls[i].vx = -balls[i].vx;
+            }
+            if(balls[i].y+balls[i].radius>=height){
+                balls[i].vy = -balls[i].vy;
+            }
+            if(balls[i].y-balls[i].radius<=0){
+                balls[i].vy = -balls[i].vy;
+            }
+        }
+    }
+</script>
+</html>
+

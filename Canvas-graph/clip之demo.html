@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>探照灯效果</title>
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid #999;display: block;margin: 20px auto"></canvas>
+</body>
+<script>
+    var searchLight = {x:400,y:400,radius:150,vx:Math.random()*5+10,vy:Math.random()*5+10},
+        rotate = 1;
+
+    window.onload = function () {
+
+        var canvas = document.getElementById('canvas');
+
+        canvas.width = 800;
+        canvas.height = 800;
+
+        var context = canvas.getContext('2d');
+
+        setInterval(function () {
+            startShow(context);
+            update(canvas.width,canvas.height);
+        },
+        50);
+    };
+    function startShow(cxt) {
+
+        var canvas = cxt.canvas;
+        var R = Math.floor(Math.random()*255),
+            G = Math.floor(Math.random()*255),
+            B = Math.floor(Math.random()*255),
+            A =Math.random();
+
+        cxt.clearRect(0,0,canvas.width,canvas.height);
+
+        //画背景
+        cxt.save();
+        cxt.beginPath();
+        cxt.fillStyle = 'black';
+        cxt.fillRect(0,0,canvas.width,canvas.height);
+
+        //画圆
+        cxt.save();
+        cxt.beginPath();
+        //cxt.arc(searchLight.x,searchLight.y,searchLight.radius,0,2*Math.PI);
+        cxt.translate(searchLight.x,searchLight.y);
+        cxt.rotate(rotate/180*Math.PI);
+        cxt.scale(searchLight.radius,searchLight.radius);
+        cxt.arc(0,0,1,0,2*Math.PI);
+        cxt.fillStyle = "rgba("+R+","+G+","+B+","+A+")";
+        cxt.fill();
+        cxt.restore();
+        cxt.clip();
+
+        var linearGrad = cxt.createLinearGradient(0,0,canvas.width,0);
+        linearGrad.addColorStop(0,'blue');
+        linearGrad.addColorStop(0.25,'yellow');
+        linearGrad.addColorStop(0.5,'rgba(255,23,144,0.5)');
+        linearGrad.addColorStop(0.75,'purple');
+        linearGrad.addColorStop(1,'pink');
+        cxt.fillStyle = linearGrad;
+        cxt.font = 'bold 60px 微软雅黑 ';
+        cxt.textAlign = 'center';
+        cxt.textBaseline = 'middle';
+        cxt.fillText('状大我大妖尾！！！',canvas.width/2,200);
+        cxt.fillText('状大我大妖尾！！！',canvas.width/2,400);
+        cxt.fillText('状大我大妖尾！！！',canvas.width/2,600);
+
+        cxt.restore();
+
+    }
+    function update(width,height) {
+        rotate++;
+
+        searchLight.x += searchLight.vx;
+        searchLight.y += searchLight.vy;
+
+        if(searchLight.x + searchLight.radius>width){
+            searchLight.vx = -searchLight.vx;
+            searchLight.x = width - searchLight.radius;
+        }
+        if(searchLight.x - searchLight.radius<0){
+            searchLight.vx = -searchLight.vx;
+            searchLight.x = searchLight.radius;
+        }
+        if(searchLight.y + searchLight.radius>height){
+            searchLight.vy = -searchLight.vy;
+            searchLight.y = height - searchLight.radius;
+        }
+        if(searchLight.y - searchLight.radius<0){
+            searchLight.vy = -searchLight.vy;
+            searchLight.y  = searchLight.radius;
+        }
+    }
+
+
+</script>
+</html>

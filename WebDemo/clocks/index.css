@@ -1,0 +1,96 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#container{
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 100px auto;
+    border: 1px solid #000;
+    border-radius: 50%;
+}
+ul{
+    list-style-type: none;
+    position: relative;
+}
+ul li{
+    width: 1px;
+    height: 6px;
+    background-color: #000;
+    position: absolute;
+    left: 100px;
+    top: 0;
+    transform-origin: center 100px;
+
+}
+ul li:nth-child(5n+1){
+    width: 3px;
+    height: 10px;
+}
+#hour,#minutes,#seconds,#circle{
+    position: absolute;
+    background-color: #000;
+}
+#hour,#minutes,#seconds{
+    transform-origin: bottom;
+}
+#hour{
+    width: 6px;
+    height: 40px;
+    left: 97px;
+    top: 60px;
+}
+#minutes{
+    width: 4px;
+    height: 60px;
+    background-color: #200;
+    left: 98px;
+    top: 40px;
+}
+#seconds{
+    width: 2px;
+    height: 80px;
+    background-color: #f00;
+    left: 99px;
+    top: 20px;
+}
+#circle{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    left: 95px;
+    top: 95px;
+}
+#digit{
+    position: relative;
+}
+#digit .spans{
+    position: absolute;
+    left: 94px;
+    top: 6px;
+    /*-webkit-transform-origin: center 90px;
+    -moz-transform-origin: center 90px;
+    -ms-transform-origin: center 90px;
+    -o-transform-origin: center 90px;*/
+    transform-origin: center 90px;
+}
+#digit .write{
+    width:20px;
+    height:20px;
+    font-size: 20px;
+    /*transform-origin: center center;*/
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+}
+.xiaozhi{
+    width: 55px;
+    height: 20px;
+    font-size: 17px;
+    font-family: 方正姚体;
+    font-style: italic;
+    text-align: center;
+    line-height: 20px;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}

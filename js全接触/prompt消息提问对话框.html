@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prompt</title>
+    <script type="text/javascript">
+        function que() {
+            var score = prompt('请输入你的成绩');
+            if(score!=null && score!=''){
+                alert('您的成绩是：'+score);
+            }else if(score!=null) {
+                alert('您没有输入！');
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" name="button" onclick="que()" value="请点击我">
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8" content="text/html" http-equiv="content-type">
+    <title>搜索样式</title>
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            background-color: #333;
+        }
+        .bg{
+            width: 1228px;
+            height: 690px;
+            margin: 0 auto;
+            background-image: url("river.jpg");
+            position: relative;/*使其中的元素相对于它本身定位*/}
+        .box{
+            position: absolute;
+            top: 240px;
+            left: 360px;}
+        .logo{
+            margin: -5px 15px 0 0;
+            width: 107px;
+            height: 53px;
+            background-image: url("logo.png");
+            float: left;}
+        form{
+            height: 39px;
+            width: 389px;
+            background-color: #fff;
+            float: left;}
+        .input-text{
+            margin-top: 5px;
+            width: 350px;
+            height: 29px;
+            line-height: 29px;
+            border: 0;
+            outline: none;
+            float: left}
+        .input-button{
+            margin: 5px 0 0 0;
+            width: 29px;
+            height: 29px;
+            border: 0;
+            background-image: url("search-button.png");
+            float: left;}
+        .suggest{
+            width: 389px;
+            border: 1px solid #999;
+            background-color: #fff;}
+        .suggest ul{
+            padding: 0;
+            margin: 0;
+            list-style-type: none;}
+        .suggest ul li{
+            padding: 3px;
+            line-height: 25px;/*由行高决定的距离*/
+            font-size: 14px;
+            color: #777;
+            cursor: pointer;}
+        .suggest ul li:hover{
+            background-color: #e5e5e5;/*高亮颜色*/
+            text-decoration: underline;
+        }
+    </style>
+    <script>
+        //document.title = document.documentElement.clientHeight+" "+document.documentElement.clientWidth;
+        //document.title = window.innerHeight + " " + window.innerWidth;
+    </script>
+</head>
+<body>
+    <div class="bg">
+        <div class="box">
+            <div class="logo"></div>
+            <form id="search_form" action="http://cn.bing.com/search" target="_blank" autocomplete="off">
+                <input type="text" class="input-text" name="q" id="search_input">
+                <input type="submit" class="input-button" value="">
+            </form>
+        </div>
+    </div>
+    <div class="suggest" id="search_suggest" style="display: none">
+        <ul>
+            <li>手机信号</li>
+            <li>手机壳</li>
+        </ul>
+    </div>
+</body>
+</html>

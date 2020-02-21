@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>倒计时</title>
+</head>
+<body>
+    <div>
+        <span id="showTime"></span>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        showTime();
+    }
+    function showTime() {
+        var currentTime = new Date(),
+            endTime = new Date("2018/6/6,12:13:48"),
+            leaveTime = parseInt((endTime.getTime() - currentTime.getTime())/1000),
+            day = parseInt(leaveTime/(24*60*60)),
+            hours = parseInt(leaveTime/(60*60)%24),
+            minu = parseInt(leaveTime/60%60),
+            sec = parseInt(leaveTime%60),
+            time = document.getElementById('showTime');
+        time.innerHTML = day +' 天 ' + hours + " 时 " + minu +' 分 ' + sec + ' 秒';
+        if(leaveTime<=0){
+            time.innerHTML = "高考开始！！！";
+        }
+        setTimeout(showTime,500);
+    }
+</script>
+</html>

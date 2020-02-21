@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文件过期控制</title>
+</head>
+<body>
+</body>
+<script>
+    function set(key,val) {
+        var curTime = new Date().getTime();
+        localStorage.setItem(key,JSON.stringify({data:val,time:curTime}));
+    }
+    function get(key,exp) {
+        var data = localStorage.getItem(key);
+        var dataObj = JSON.parse(data);
+        if(new Date().getTime() - dataObj.time > exp){
+             console.log('expires');
+        }else{
+            console.log('data = '+dataObj.data);
+        }
+    }
+</script>
+</html>

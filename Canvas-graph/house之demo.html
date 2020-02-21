@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>house</title>
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid #999;display: block;margin: 20px auto"></canvas>
+</body>
+    <script>
+        window.onload = function () {
+
+            var canvas = document.getElementById('canvas');
+
+            canvas.height = 800;
+            canvas.width = 800;
+
+            var context = canvas.getContext('2d');
+
+            //绘制顺时针外圈
+            context.save();
+            context.beginPath();
+            context.moveTo(200,300);
+            context.lineTo(350,150);
+            context.lineTo(500,300);
+            context.closePath();
+            context.fillStyle = '#058';
+            context.fill();
+            context.stroke();
+            context.restore();
+
+            context.beginPath();
+            context.rect(225,300,250,200);
+            drawEllipse(context,290,350,40,20);
+            drawReverseRect(context,380,800,70,199);
+            context.closePath();
+            /*context.shadowColor = "gray";
+            context.shadowOffsetX = 10;
+            context.shadowOffsetY = 10;
+            context.shadowBlur = 10;*/
+            context.fillStyle = '#058';
+            context.fill();
+
+
+
+        };//逆时针椭圆
+        function drawEllipse(cxt,x,y,a,b) {
+            var r = (a>b)?a:b;
+            var ratioX = a/r,
+                ratioY = b/r;
+            cxt.scale(ratioX,ratioY);
+            cxt.arc(x/ratioX,y/ratioY,r,0,2*Math.PI,true);
+        }
+        function drawReverseRect(cxt,x,y,width,height) {
+            cxt.moveTo(x,y);
+            cxt.lineTo(x,y+height);
+            cxt.lineTo(x+width,y+height);
+            cxt.lineTo(x+width,y);
+        }
+    </script>
+</html>

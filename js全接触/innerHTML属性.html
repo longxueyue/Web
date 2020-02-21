@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>innerHTML获取或替换HTML元素内容</title>
+</head>
+<body>
+    <p id="con">我最帅！</p>
+    <script type="text/javascript">
+        var change = document.getElementById('con');
+        document.write('P标签原有内容：'+change.innerHTML+'<br>');
+        change.innerHTML = '我最美！';
+        document.write('P标签改动之后的内容：'+change.innerHTML);
+    </script>
+</body>
+</html>

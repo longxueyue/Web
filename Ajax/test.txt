@@ -1,0 +1,8 @@
+<?php
+	if($_POST == 'xiaozhi'){
+		echo '小志最帅！！';
+	}else{
+		echo '没有！';
+	}
+
+?>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素定位</title>
+    <style type="text/css">
+        body{
+            margin: 15px;
+            font-size: 12px;
+            font-family: 微软雅黑;
+        }
+        .father{
+            background-color: #fff266;
+            border: 1px solid #17ff14;
+            /*padding: 25px;*/
+        }
+        .son1{
+            padding: 10px;
+            margin: 0px;
+            background-color: #ffe1bc;
+            border: 1px dashed #ff2834;
+            float: left;/*左浮动，在某一设定区域内进行浮动起来*/
+        }
+        .son2{
+            padding: 5px;
+            margin: 5px;
+            background-color: #e2c1ff;
+            border: 1px dashed #5610ff;
+            /*float: left;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son2">
+            <div class="son1">son1</div>
+            <div class="son2">son2</div>
+        </div>
+
+    </div>
+</body>
+</html>

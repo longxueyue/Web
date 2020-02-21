@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后代与子代与群组与通配选择器</title>
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="demo.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+    <!--群组选择器-->
+    <div id="div1">div</div>
+    <div>div</div>
+
+    <p class="pp">p</p>
+    <p class="pp">p</p>
+    <p>p</p>
+
+    <strong>strong</strong>
+    <strong>strong</strong>
+    <!--子代选择器-->
+    <div id="div2">
+        <p>啪啪啪</p>
+        <p>啪啪啪</p>
+        <div>
+            <p>啪啪啪</p>
+            <p>啪啪啪</p>
+            <p>啪啪啪</p>
+        </div>
+    </div>
+    <!--通配选择器-->
+    <ol>
+        <li><a>大狗</a></li>
+        <li><a>二狗</a></li>
+        <li><em>三狗</em></li>
+    </ol>
+    <a>死狗</a>
+    <a>五🐶</a>
+    <!--后代选择器-->
+    <div>
+        <em>我去去哦为</em>
+        <strong>我去去哦为</strong>
+        <strong>我去去哦为</strong>
+    </div>
+    <!--特殊选择器--><!--要使第一行显示颜色等样式-->
+    <div class="box">div</div>
+    <p class="box">p</p>
+
+    <div>div</div>
+    <p>p</p>
+<!--多class选择器-->
+    <div class="name css">岁的好i</div>
+<!--next选择器只能改变同级之下的一个标签-->
+    <p>p</p>
+    <p>p</p>
+    <p>p</p>
+    <strong>strong</strong>
+    <strong>strong</strong>
+    <strong>strong</strong>
+    <div class="div3">div</div>
+    <strong>strong</strong>
+    <strong>strong</strong>
+    <strong>strong</strong>
+    <p>p</p>
+    <p>p</p>
+    <em>em</em>
+    <p>p</p>
+</body>
+</html>

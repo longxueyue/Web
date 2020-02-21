@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>postion定位之absolute</title>
+    <style type="text/css">
+        body{
+            margin: 5px;
+            font-size: 12px;
+            font-family: 微软雅黑;
+        }
+        #father{
+            background-color: #ffee74;
+            border: 1px dashed blue;
+            width: 100%;
+            height: 100%;
+            padding: 5px;
+        }
+        #block1{
+            background-color: #a8ffe9;
+            border: 1px dashed #e2d2ff;
+            position: absolute;/*一旦定义为absolute（绝对定位）时他就脱离了父块，第二个子块成了父块的第一子块，，*/
+            left: 30px;
+            top: 25px;
+        }
+        #block2{
+            background-color: #c8ff66;
+            border: 1px dashed #22ff22;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="father">
+        <div id="block1">absolute</div>
+        <div id="block2">block2</div>
+    </div>
+</body>
+</html>

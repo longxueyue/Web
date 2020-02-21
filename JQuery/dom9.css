@@ -1,0 +1,19 @@
+#box{
+    width:100px;
+    height:100px;
+    background: red;
+    position: relative;
+}
+#box1{
+    width:100px;
+    height:100px;
+    background: dodgerblue;
+    position: relative;
+}
+.test{
+    padding: 5px;
+    margin-right: 5px;
+    background: orange;
+    display: none;
+    float: left;
+}

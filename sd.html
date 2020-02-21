@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var value="";
+    var x = document.getElementById("xuan");
+    var y = x.selectedIndex;
+    function add()
+    {
+        var text=document.getElementById("text").value;
+        if(!text=="")
+        {
+            value+=text+"\n";
+            document.getElementById("textarea").value=value;
+        }
+        document.getElementById("text").value="";
+    }
+    function Clear()
+    {
+        document.getElementById("textarea").value="";
+        document.getElementById("text").value="";
+        value=""
+    }
+</script>
+<textarea name="textarea" cols="" rows="5" id="textarea"></textarea>
+<br>
+<!--<select name="xuan" id="xuan">-->
+    <!--<option>小志</option>-->
+    <!--<option>纱雾</option>-->
+    <!--<option>第三者</option>-->
+<!--</select>-->
+<input name="text" type="text" id="text">
+<input type="button" value="追加" onClick="add()">
+<input type="button" value="清空" onClick="Clear()">
+</body>
+</html>

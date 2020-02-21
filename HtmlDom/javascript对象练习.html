@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript对象</title>
+    <script>
+        person = new Object();
+        person1 ={name:"wangyue",age:15,eyeColor:"Red"}
+        person.name = "wangxin";
+        person.age = 16;
+        person.eyeColor = "Blue";
+        document.write(person.name+" is "+person.age+" years old. <br> ");
+        document.write(person1.name+" is "+person1.age+" years old. <br>");
+        function Person(name,age,eyecolor){
+            this.name = name;
+            this.age = age;
+            this.eyeColor = eyecolor;
+            function name(name1) {
+                this.name = name1;
+            }
+        }//创建对象构造器
+        myFather = new Person("王欣",18,"Blue");
+        document.writeln(myFather.name+" is "+myFather.age+" years old. <br>");
+        myFather.name("王悦");
+        document.writeln(myFather.name);//有点蒙蔽
+
+        var myIphone = new Array();
+        myIphone[0]="小米";
+        myIphone[1]="红米";
+        myIphone[2]="大米";
+        for(x in myIphone){
+            document.writeln(myIphone[x]+"<br>");
+        }
+        var food = new Array();
+        food[0] = "绿豆";
+        food[1]="红豆";
+        food[2]="黑豆";
+        myIphone.concat(food);//该方法不会修改原有的数组，会创建一个暂时的副本返回
+        for(x in myIphone){
+            document.writeln(food[x]+"<br>");
+        }
+        document.write(food.join(".")+"<br> ");//将数组输出，可以自己指定输出时的间隔符
+        function SortNumber(a,b)
+        {
+            return a-b;
+        }
+        var arr = new Array(15,16,0,2,34);
+        document.write(arr+"<br>");
+        document.write(arr.sort(SortNumber)+"<br>");//sort(function:name)函数里面是函数名参数
+        document.write(arr.length+"<br>");
+
+        function employee(name,job,born){
+            this.name = name;
+            this.job = job;
+            this.born = born;
+        }//定义数组函数
+        //对声明的数组进行声明
+        var bill = new employee("王欣","程序员",1998);
+        employee.prototype.sex = null;
+        bill.sex = "man";
+        document.write(bill.sex+"<br>");
+        document.write(bill.constructor+"<br>");
+        arr.splice(1,0,"是");//这是我向数字数组中添加一个字符，意想不到的输出了，提现了JavaScript的兼容性很高
+        document.write(arr+"<br>");
+
+        var bool = new Boolean(true);
+        bool = false;
+        document.write(bool.valueOf()+"<br>");//返回的是对象的值
+        document.write(Math.round(4.25)+"<br>");//返回的是参数四舍五入的值
+        document.write(Math.floor(Math.random()*100+1));//random产生0~1之中的随机数(小数)
+                            //而floor方法是对参数取整(<=参数)所以取随机整数的时候用两者合并的方法可以说是完美
+        document.write("<br>"+Math.ceil(1.4));//对参数进行上舍入
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

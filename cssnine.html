@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS动画</title>
+    <style type="text/css">
+        .div{
+            text-align: center;/*选定位置*/
+        }
+        /*.img{*/
+            /*margin-top: 130px;*/
+            /*width: 629px;*/
+            /*height: 888px;*/
+        /*}*/
+        /*html:hover img{*/
+            /*transition-delay: 500ms;*/
+            /*transition-duration: 1s;*/
+            /*width: 64px;*/
+            /*height: 100px;*/
+            /*margin-top: 0px;*/
+        /*}*/
+        /*p{*/
+            /*font-family: 微软雅黑;*/
+            /*font-size: 40px;*/
+            /*text-shadow: 1px 1px 2px #ffd7fa;*/
+            /*opacity: 1;*/
+        /*}*/
+        /*html:hover p{*/
+            /*transition-delay: 500ms;*/
+            /*transition-duration: 1s;*/
+            /*font-family: 微软雅黑;*/
+            /*font-size: 40px;*/
+            /*text-shadow: 1px 1px 2px #ffd7fa;*/
+            /*opacity: 0;*/
+        /*}*/
+        .img1{
+            margin-top: 130px;
+            width: 256px;
+            height: 300px;
+            animation-delay: 1s;
+            animation-duration: 5s;
+            animation-play-state: running;
+            animation-name: ailuo;
+            animation-iteration-count: infinite;
+
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-name: ailuo;
+            -webkit-animation-duration: 5s;
+            -webkit-animation-delay: 1s;
+            -webkit-animation-play-state: running;
+        }
+        @keyframes ailuo {
+            50% {transform: rotate(180deg); width: 128px; height: 200px; margin-top: 75px; }
+            100% {transform: rotate(360deg); width: 64px; height: 100px; margin-top: 0px;}
+        }
+        .p11 {
+            font-family: 微软雅黑;
+            font-size: 40px;
+            text-shadow: 1px 1px 2px palegreen;
+            opacity: 1;
+            animation-name: ailuo1;
+            animation-delay: 1s;
+            animation-duration: 5s;
+            animation-play-state: running;
+            animation-iteration-count: infinite;
+
+            -webkit-animation-iteration-count: infinite;
+            -webkit-animation-name: ailuo1;
+            -webkit-animation-duration: 5s;
+            -webkit-animation-delay: 1s;
+            -webkit-animation-play-state: running;
+        }
+        @keyframes ailuo1 {
+            50% {font-size: 20px; font-family: 微软雅黑; opacity: 0.5;
+                text-shadow:1px 1px 2px palegreen; margin-top: 75px;}
+            100% { opacity: 0; margin-top: 0px;}
+        }
+
+
+    </style>
+</head>
+<body>
+    <!--<div class="div">
+        <img src="c2b799119313b07e24d26fc107d7912396dd8c55.jpg" class="img">
+        <p>情色漫画老师</p>
+    </div>-->
+    <div class="div">
+        <img src="情色漫画老师.png"; class="img1">
+        <p class="p11">情色漫画老师</p>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆界面</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form id="mooBox">
+        <fieldset>
+            <legend>登陆界面</legend>
+            <p>
+                <label for="username">账号 </label>
+                <input type="text" id="username" name="username" required>
+            </p>
+            <p>  <!--label标签中的for属性应该与相关元素的id属性值相同-->
+                <!--也就是说操作label就是操作与之绑定的相关表单元素-->
+                <label for="cpassword">密码 </label>
+                <input type="text" id="cpassword" name="password" required>
+            </p>
+            <p>
+                <label for="confirm-password">确认密码 </label>
+                <input type="text" id="confirm-password" name="confirm-password" required>
+            </p>
+            <p>
+                <input type="submit" value="登陆">
+            </p>
+        </fieldset>
+    </form>
+<script src="jquery-3.3.1.js"></script>
+<script src="jquery.validate-1.13.1.js"></script>
+<script>
+    var validator1;
+    $(document).ready(function () {
+        validator1 = $('#mooBox').validate({
+            /*debug:true,*///加入debug的校验规则并且参数为true，则表单不会提交
+            rules:{   //规则里的都是对应元素的name而不是
+                username:{
+                    required:true,
+                    /*minlength:2,
+                    maxlength:10,*/
+                    /*rangelength:[3,10],*/
+                    /*min:2,//判断最小值不能小于2
+                    max:10,//最大值不能超过 10*/
+                    /*email:true  格式要正确  */
+                    /*url:true   地址http://www.baidu.com*/
+                    /*date:true, */   //要写成日期能够识别的格式
+                    // dateISO:true  //需要采用ISO标准格式 年-月/日这样的格式
+                    /*remote:{                         //  -和/可以互换
+                        url:'remote.json',
+                        type:'post',    //发送的数据类型
+                        data:{   //向用户名发送数据
+                            loginTime:function () {         //发送当前时间
+                                return + new Date;   //new Date()等于getTime()
+                                            // 返回距离1970年1月1日的毫秒时间
+                            }
+                        }
+                    }*/
+                    /*number:true      必须是数字*/
+                   /* digits:true     必须是整数*/
+                },
+                password: {
+                    required:true,
+                    minlength: 2,
+                    maxlength: 16
+                },//因为中间加了-，所以为了识别name加上引号
+                'confirm-password': {
+                    equalTo:'#cpassword'   //校验与id为cpassword的元素值是否相等！！！
+                }
+            },
+            messages:{
+                username:{
+                    required:'请输入用户名',
+                   /* minlength:'用户名最小的长度为2',
+                    maxlength:'用户名最大的长度为10',*/
+                    /*rangelength:'用户名长度为3-10位',*/
+                    /*min:'2',
+                    max:'10',*/
+                    remote:'用户名不存在'
+                },
+                password:{
+                    required:'请输入密码',
+                    minlength:'密码最小的长度为2',
+                    maxlength:'密码最大的长度为16'
+                },
+                'confirm-password': {
+                    equalTo:'两次输入的密码不一致'   //校验与id为
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

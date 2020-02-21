@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" src="js/transform.js"></script>
+    <script type="text/javascript" src="js/QiXi_Walk.js"></script>
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/PageA.css">
+    <link type="text/css" rel="stylesheet" href="css/character.css">
+</head>
+<body>
+    <div id="content">
+        <ul class="content-wrap">
+            <li>
+                <div class="a_background">
+                    <div class="a_background_top"></div>
+                    <div class="a_background_middle"></div>
+                    <div class="a_background_bottom"></div>
+                </div>
+            </li>
+            <li>页面2</li>
+            <li>页面3</li>
+        </ul>
+        <div id="boy" class="character"></div>
+        <button class="button">点击运行</button>
+        <button>点击暂停</button>
+    </div>
+    <script type="text/javascript">
+
+        /*$('.button').click(function () {
+            transform.scrollTo($('#content').width()*2,5);
+        });*/
+        var container = $('#content');
+        var transform = transform(container);
+
+        function scrollTo(time,speedX) {
+            var distX = container.width() * speedX;
+            transform.scrollTo(distX,time);
+        }
+
+        var boy = BoyWalk();
+
+        /*$('button:first').click(function () {
+            boy.walkTo(2000,0.2).then(function () {
+                boy.setColor('red')
+            }).then(function() {//执行回调
+                //第二次走
+                return boy.walkTo(2000, 0.4);//再次执行walkTo函数再次执行deferred函数
+            }).then(function() {
+                //第二次走路完成
+                boy.setColor('yellow')
+            }).then(function() {
+                //第三次走路
+                return boy.walkTo(2000, 0.6)
+            }).then(function() {
+                //第三次走路完成
+                boy.setColor('blue')
+            });
+        });*/
+        $('button:first').click(function () {
+            boy.walkTo(2000,0.2).then(function () {
+                scrollTo(5000,1); //页面开始滚动
+            }).then(function () {
+                return boy.walkTo(5000,0.5);
+            })
+        });
+    </script>
+
+</body>
+</html>

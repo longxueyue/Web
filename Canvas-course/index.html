@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Canvas绘图</title>
+</head>
+<body>
+
+    <canvas id="canvas" style="border: 1px solid #aaa;display: block;margin: 50px auto"></canvas>
+
+</body>
+<script>
+    var tangram = [
+        {p:[{x:0,y:0},{x:800,y:0},{x:400,y:400}],color:'#caff67'},
+        {p:[{x:0,y:0},{x:400,y:400},{x:0,y:800}],color:'#67becf'},
+        {p:[{x:800,y:0},{x:800,y:400},{x:600,y:600},{x:600,y:200}],color:'#ef3d61'},
+        {p:[{x:600,y:200},{x:600,y:600},{x:400,y:400}],color:'#f9f51a'},
+        {p:[{x:400,y:400},{x:600,y:600},{x:400,y:800},{x:200,y:600}],color:'#a594c0'},
+        {p:[{x:200,y:600},{x:400,y:800},{x:0,y:800}],color:'#fa8ecc'},
+        {p:[{x:800,y:400},{x:800,y:800},{x:400,y:800}],color:'#f6ca29'}
+    ];
+
+    window.onload = function () {
+
+        var canvas = document.getElementById('canvas');
+        canvas.height = 800;
+        canvas.width = 800;
+
+        var context = canvas.getContext('2d');
+        /*context.beginPath();
+        context.moveTo(100,100);
+        context.lineTo(700,700);
+        context.lineTo(100,700);
+        context.lineTo(100,100);
+        context.closePath();
+
+        context.fillStyle = '#005588';
+        context.fill();   //填充
+        context.lineWidth = 5;
+        context.strokeStyle = 'red';
+        context.stroke();
+
+        context.beginPath();
+        context.moveTo(200,100);
+        context.lineTo(700,600);
+        context.closePath();
+
+        context.strokeStyle = 'black';
+        context.stroke();*/
+
+        /*for(var i=0;i<tangram.length;i++){
+            draw(tangram[i],context);
+        }*/
+        context.strokeStyle = '#005588';
+        context.arc(200,200,100,0,1.5*Math.PI,true);//True代表逆时针
+        context.stroke();
+
+
+
+    };
+
+
+
+
+    function draw(piece,can) {  //piece段的意思
+
+        can.beginPath();
+        can.moveTo(piece.p[0].x,piece.p[0].y);
+        for(var i=1;i<piece.p.length;i++){
+            can.lineTo(piece.p[i].x,piece.p[i].y);
+        }
+        can.closePath();
+
+        can.fillStyle = piece.color;
+        can.fill();
+
+        can.lineWidth = 3;
+        can.strokeStyle = 'black';
+        can.stroke();
+    }
+</script>
+</html>

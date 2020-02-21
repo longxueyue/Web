@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>填充样式</title>
+</head>
+<body>
+    <canvas id="canvas" style="border: 1px solid #999999;margin: 50px auto;display: block;"></canvas>
+</body>
+<script>
+
+    window.onload = function () {
+
+        var canvas = document.getElementById('canvas');
+
+        canvas.width = 800;
+        canvas.height = 800;
+
+        var context = canvas.getContext('2d');
+
+        //渐变色的方向是linearGrad中取的两个坐标形成的线所代表的方向
+        var linearGrad = context.createLinearGradient(0,0,0,800);
+        linearGrad.addColorStop(0,'#fff');
+        linearGrad.addColorStop(1,'#000');
+        context.fillStyle = linearGrad;
+        context.fillRect(0,0,800,800);
+
+    }
+
+</script>
+</html>

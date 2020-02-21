@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>覆盖效果</title>
+    <style>
+        body{
+            font-size: 14px;
+            font-family: sans-serif 微软雅黑;
+        }
+        #button{
+            display: block;
+            width: 1200px;
+            height: 80px;
+            position: absolute;
+            bottom: 20px;
+            left: 300px;
+        }
+        a{
+            text-decoration: none;
+            float: left;
+            margin-left: 20px;
+        }
+        a:hover,a:active{
+            color: #058;
+            font-size: 17px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" style="display: block;margin: 40px auto;border: 1px solid #999;"></canvas>
+    <div id="button">
+        <a href="#">source-over</a>
+        <a href="#">source-atop</a>
+        <a href="#">source-in</a>
+        <a href="#">source-out</a>
+        <a href="#">destination-over</a>
+        <a href="#">destination-atop</a>
+        <a href="#">destination-in</a>
+        <a href="#">destination-out</a>
+        <a href="#">lighter</a>
+        <a href="#">copy</a>
+        <a href="#">xor</a>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        competeGraph('source-over');
+
+        var a_All = document.getElementById('button').getElementsByTagName('a');
+        for(var i=0;i<a_All.length;i++){
+            //首先，我为什么要用this，这个this代表个毛线
+            a_All[i].onclick = function () {
+                    competeGraph(this.text);
+                    return false;
+                }
+        }
+    };
+    function competeGraph(globalText) {
+        var canvas = document.getElementById('canvas');
+        canvas.height = 700;
+        canvas.width = 1200;
+
+        var context = canvas.getContext('2d');
+
+        context.clearRect(0,0,canvas.width,canvas.height);
+
+        context.font = 'bold 40px sans-serif';
+        var linearGrad = context.createLinearGradient(0,0,1200,0);
+        linearGrad.addColorStop(0,'blue');
+        linearGrad.addColorStop(0.25,'yellow');
+        linearGrad.addColorStop(0.5,'rgba(255,23,144,0.5)');
+        linearGrad.addColorStop(0.75,'purple');
+        linearGrad.addColorStop(1,'pink');
+        context.fillStyle = linearGrad;
+        context.textAlign = 'center';
+        context.textBaseline = 'middle';
+        context.fillText('globalCompositeOperation = ' + globalText,600,50);
+
+        //画矩形
+        context.fillStyle = '#058';
+        context.fillRect(400,250,200,200);
+
+        context.globalCompositeOperation = globalText;
+
+        context.fillStyle = 'red';
+        context.moveTo(500,350);
+        context.lineTo(800,600);
+        context.lineTo(400,600);
+        context.fill();
+
+    }
+</script>
+</html>
+

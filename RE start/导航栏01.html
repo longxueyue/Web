@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航栏</title>
+    <style>
+        ul{
+            /*list-style: none url('http://i4.bvimg.com/644239/5566cfbfddb74725.gif');*/
+            list-style-type: none;
+            height: 50px;
+            border-bottom: 5px solid #fffd3b;
+        }
+        li{
+            float: left;
+            margin-top: 20px;
+        }
+        a{
+            text-decoration: none; display: block; width: 120px; height: 30px;
+            line-height: 30px;
+            background-color: #ccc; text-indent: 10px; margin-bottom: 1px;
+        }
+        .on,a:hover{
+         /*   color: #fff;background-image: url('http://i1.bvimg.com/644239/6deb8347ea0a2c68.png');*/
+          /*  background-position: 0 30px;   圆角菜单的制作*/
+            color: #fff; background-color: #fffd3b;
+            height: 40px;
+            margin-top: -10px;/*向上移动就可以了*/
+            line-height: 40px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script>//这是在运行完document后执行的代码
+        $(function () {
+            $('a').hover(  //hover是包装了mouseenter和mouseout两个方法，是对当前元素有效，对其子元素无效
+                function () {
+                    $(this).stop().animate({'width':'160px'},200);
+                },
+                function () {
+                    $(this).stop().animate({'width':'120px'},200);
+                }
+            )
+        });
+    </script>
+ <!--   <script>
+        window.onload = function () {
+            var aA = document.getElementsByTagName('a');
+            for(var i=0;i<aA.length;i++)
+            {
+                aA[i].onmouseover = function () {
+                    clearInterval(this.abc);
+                    var This = this;/*This.abc 是This这个对象设置的属性值*/
+                    This.abc = setInterval(function () {
+                        This.style.width = This.offsetWidth + 8 +"px";
+                        if(This.offsetWidth >= 120)
+                            clearInterval(This.abc);
+                    },30)
+                };
+                aA[i].onmouseout = function () {
+                    clearInterval(this.acv);
+                    var This = this;
+                    This.acv = setInterval(function () {
+                        This.style.width = This.offsetWidth - 8 +"px";
+                        if(This.offsetWidth <= 160)
+                            clearInterval(This.acv);
+                    },30)
+                }
+            }
+        }
+    </script>-->
+</head>
+<body>
+    <ul>
+        <li><a class="on" href="#">首 页</a></li>
+        <li><a href="#">直 播</a></li>
+        <li><a href="#">动 画</a></li>
+        <li><a href="#">漫 画</a></li>
+    </ul>
+</body>
+</html>

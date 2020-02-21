@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>try..catch与表单元素</title>
+    <script>
+        document.write("一二三四五");
+        var txt;
+        function myfunction(){
+            try{
+                addel("wel");
+            }catch(err)
+            {
+                txt="本页出现错误\n\n";
+                txt+="错误描述："+err.message+"\n\n";
+                txt+="点击确定继续。\n\n";
+                alert(txt);
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="请点击" onclick="myfunction()">
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>伸缩图片</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .range{
+            width: 400px;
+            height: 40px;
+            display: block;
+            margin: 10px auto;
+        }
+
+        #radio_type{
+            width: 80px;
+            position: absolute;
+            top: 30px;
+            right: 400px;
+        }
+    </style>
+</head>
+<body>
+
+    <canvas id="canvas" style=" display: block;margin: 10px auto;border: 1px solid #999;"></canvas>
+    <div id="radio_type">
+        <input type="radio" name="type" value="Manifier" checked><label>放大镜</label>
+        <br>
+        <input type="radio" name="type" value="Smallmirror"><label>放小镜</label>
+    </div>
+    <input type="range" id="range" class="range" min="0.5" max="3.0" value="1.0" step="0.01">
+    <canvas id="watermark_canvas" style="display: none;"></canvas>
+    <canvas id="large_canvas" style="display: none;margin: 10px auto;"></canvas>
+
+</body>
+<script>
+    var canvas = document.getElementById('canvas');
+    var context = canvas.getContext('2d');
+    var range = document.getElementById('range');
+    var image = new Image();
+    var isMoving;
+    var large_scale;
+    var scale = range.value;//滑杆的
+    var fontSize;
+
+    var watermark_canvas = document.getElementById('watermark_canvas');
+    var watermarkContext = watermark_canvas.getContext('2d');
+
+    var large_canvas = document.getElementById('large_canvas');
+    var largeContext = large_canvas.getContext('2d');
+    window.onload = function () {
+        image.src = 'blood.jpg';
+
+        image.onload = function () {
+            //context.drawImage(image,0,0,274,290,0,0,274,290)
+            /*setInterval(function () {
+                context.clearRect(0,0,canvas.width,canvas.height);
+                var srcX = 0,
+                    srcY = 0;
+                if(srcX+parseInt(range.value)<0){
+                    srcX = Math.abs(parseInt(range.value));
+                    srcY = Math.abs(parseInt(range.value));
+                    context.drawImage(image,0,0,canvas.width,canvas.height,
+                        srcX,srcY,canvas.width+2*parseInt(range.value),canvas.height+2*parseInt(range.value));
+                }else {
+                    srcX = parseInt(range.value)*0.75;
+                    srcY = parseInt(range.value)*0.75;
+                    context.drawImage(image,srcX,srcY,canvas.width,canvas.height,
+                        0,0,canvas.width+2*parseInt(range.value),canvas.height+2*parseInt(range.value));
+                }
+
+            },50);*/
+            /*setInterval(function () {
+                scale =range.value;
+                drawImageByScale(scale);
+            },50)*/
+            //或者
+            canvas.width = image.width;
+            canvas.height = image.height;
+
+            large_canvas.width = image.width*2.5 ;
+            large_canvas.height = image.height*2.5 ;
+            //radioCheck();
+            large_scale = large_canvas.width / canvas.width;
+
+            watermark_canvas.width = image.width/3;
+            watermark_canvas.height = image.height/8;
+            fontSize = parseInt(10) + parseInt(image.width/1000);
+
+            watermarkContext.font = 'bold '+ fontSize+'px sans-serif';
+            watermarkContext.fillStyle = 'rgba(130,156,244,0.69)';
+            watermarkContext.textBaseline = 'middle';
+            watermarkContext.textAlign = 'center';
+            watermarkContext.fillText('xiaozhiqin.com',watermark_canvas.width/2,watermark_canvas.height/2);
+
+            drawImageByScale(scale);
+
+            largeContext.drawImage(canvas,0,0,large_canvas.width,large_canvas.height);
+               //没有画出来
+            largeContext.drawImage(watermark_canvas,large_canvas.width-watermark_canvas.width*1.48,
+                large_canvas.height-watermark_canvas.height*1.48);
+
+
+            range.onmousemove = function () {
+                scale =range.value;
+                drawImageByScale(scale);
+            }
+        }
+
+    }
+    function radioCheck() {
+        var radio = document.getElementById('radio_type').getElementsByTagName('input');
+
+        for( var i=0;i<radio.length;i++){
+            if(radio[i].checked)
+                ManifierWithSmallmirror(this.value);
+        }
+    }
+    function ManifierWithSmallmirror(isMan) {
+        if(isMan == 'Manifier'){
+            large_canvas.width = image.width*2.5 ;
+            large_canvas.height = image.height*2.5 ;
+        }
+        if(isMan == 'Smallmirror'){
+            large_canvas.width = image.width/2.5 ;
+            large_canvas.height = image.height/2.5 ;
+        }
+    }
+    function getPointXY(x,y) {
+        var cas = canvas.getBoundingClientRect();
+        return { x: x-cas.left, y: y-cas.top};
+    }
+
+    canvas.onmousedown = function (ev) {
+        ev.preventDefault();
+        isMoving = true;
+        var point = getPointXY(ev.clientX,ev.clientY);
+        //console.log(point.x + " " +point.y)
+        drawCanvasWithMagnifier(true ,point);
+    }
+
+    canvas.onmousemove = function (ev) {
+        ev.preventDefault();
+        if(isMoving){
+            var point = getPointXY(ev.clientX,ev.clientY);
+            drawCanvasWithMagnifier(true,point);
+        }
+    }
+    canvas.onmouseup = function (ev) {
+        ev.preventDefault();
+        isMoving = false;
+        drawCanvasWithMagnifier(false);
+    }
+    canvas.onmouseout = function (ev) {
+        ev.preventDefault();
+        isMoving = false;
+        drawCanvasWithMagnifier(false);
+    }
+
+    function drawCanvasWithMagnifier(isWithMagnifier,point){
+        context.clearRect(0,0,canvas.width,canvas.height);
+        drawImageByScale(scale);
+        if(isWithMagnifier){
+            drawMagnifier(point);
+        }
+    }
+
+    function drawMagnifier(point) {
+        var x = point.x * large_scale;
+        var y = point.y * large_scale;
+
+        var raduis = canvas.width/5;
+
+        var sx = x - raduis,
+            sy = y - raduis;
+
+        var dx = point.x - raduis,
+            dy = point.y - raduis;
+
+        //这个画布没有加东西，
+
+        context.save();
+        context.beginPath();
+        context.arc(point.x,point.y,raduis,0,2*Math.PI);
+        context.lineWidth = 10;
+        context.strokeStyle = '#069';
+        context.stroke();
+        context.clip();//剪切的是最终显示在屏幕上的画布
+        context.drawImage(large_canvas,sx,sy,2*raduis,2*raduis,dx,dy,2*raduis,2*raduis);
+        context.closePath();
+        context.restore();
+
+    }
+
+    function drawImageByScale(scale) {
+        largeContext.clearRect(0,0,large_canvas.width,large_canvas.height);
+        context.clearRect(0,0,canvas.width,canvas.height);
+
+        var imageWidth = canvas.width * scale,
+            imageHeight = canvas.height * scale;
+        var dx =canvas.width/2 - imageWidth/2,
+            dy = canvas.height/2 - imageHeight/2;
+        //alert(srcX+" "+imageWidth)
+        //context.drawImage(image,srcX,srcY,canvas.width,canvas.height,0,0,imageWidth,imageHeight);
+        context.drawImage(image,dx,dy,imageWidth,imageHeight);
+        context.drawImage(watermark_canvas,canvas.width-watermark_canvas.width,
+                                            canvas.height-watermark_canvas.height);
+        largeContext.drawImage(canvas,0,0,large_canvas.width,large_canvas.height);
+    }
+
+</script>
+</html>

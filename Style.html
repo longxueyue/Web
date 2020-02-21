@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建CSS选择器</title>
+    <style type="text/css">
+        *{
+            font-size: 20px;/*字体大小*/
+            color: #c9ffda;/*字体颜色*/
+        }
+        #id1{
+            font-style: italic;
+            color: #ffd7fa;
+        }
+        [align]{
+            font-size: 30px;
+            font-style: normal;
+            color: #ffe670;
+        }
+        [href]{/*只写href的时候对所以的href都适用*/
+            font-style: italic;
+            color: #ffd7fa;
+        }
+        [href="cssone.html"]{/*对href写有特殊标记的只对这个唯一起作用*/
+            font-style: italic;
+            color: #ffd7fa;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center">我喜欢埃罗芒阿老师！！！</h1>
+    <p id="id1">最喜欢了！！！</p><!--文中有两个选择器，id选择器和全局选择器，但局内属性优先级高于局外属性-->
+    <p align="center">真的我非常非常的喜欢你！！！</p><!--其他选择器-->
+    <a href="cssone.html">变态</a>
+    <a href="CSS.iml" style="font-size: 80px">色狼</a>
+</body>
+</html>
